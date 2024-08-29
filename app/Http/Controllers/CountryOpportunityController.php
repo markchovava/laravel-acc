@@ -29,10 +29,10 @@ class CountryOpportunityController extends Controller
 
     public function indexOpportunityByCountrySector(Request $request){
         $country = Country::where('slug', $request->country_slug)->first();
-        $opportunityIds = OpportunitySector::whereIn('sector_id', $request->sector_id)
+        $opportunityIds = OpportunitySector::where('sector_id', $request->sector_id)
                     ->pluck('opportunity_id');
         if(!empty($request->search)){
-            $data = Opportunity::with(['country'])
+            $data = Opportunity::with(['country', 'opportunity_images'])
                     ->whereIn('id', $opportunityIds)
                     ->where('country_id', $country->id)
                     ->where('name', 'LIKE', '%' . $request->search . '%')
@@ -40,7 +40,7 @@ class CountryOpportunityController extends Controller
                     ->paginate(12);
             return OpportunityResource::collection($data);
         }
-        $data = Opportunity::with(['country'])
+        $data = Opportunity::with(['country', 'opportunity_images'])
                 ->whereIn('id', $opportunityIds)
                 ->where('country_id', $country->id)
                 ->orderBy('updated_at', 'desc')
