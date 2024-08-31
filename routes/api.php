@@ -1,8 +1,10 @@
 <?php
 
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountryOpportunityController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OpportunityImageController;
 use App\Http\Controllers\OpportunitySectorController;
@@ -28,6 +30,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
+
+    Route::get('/logout', [AuthController::class, 'logout']);
+
+    /* USER */
+    Route::prefix('auth')->group(function() {
+        Route::get('/', [AuthController::class, 'view']);
+        Route::post('/', [AuthController::class, 'update']);
+    });
+    Route::post('/password', [AuthController::class, 'password']);
  
     /* COUNTRY */
     Route::prefix('country')->group(function() {
@@ -43,6 +54,25 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/country-opportunity', [CountryOpportunityController::class, 'indexOpportunityByCountry']);
     Route::get('/country-opportunity-sector', [CountryOpportunityController::class, 'indexOpportunityByCountrySector']);
     
+    /* EVENT */
+    Route::prefix('event')->group(function() {
+        Route::get('/', [EventController::class, 'index']);
+        Route::post('/', [EventController::class, 'store']);
+        Route::get('/{id}', [EventController::class, 'view']);
+        Route::post('/{id}', [EventController::class, 'update']);
+        Route::delete('/{id}', [EventController::class, 'delete']);
+    });
+
+    /* NEWS */
+    Route::prefix('news')->group(function() {
+        Route::get('/', [NewsController::class, 'index']);
+        Route::post('/', [NewsController::class, 'store']);
+        Route::get('/{id}', [NewsController::class, 'view']);
+        Route::post('/{id}', [NewsController::class, 'update']);
+        Route::delete('/{id}', [NewsController::class, 'delete']);
+    });
+
+
     /* USER */
     Route::prefix('user')->group(function() {
         Route::get('/', [UserController::class, 'index']);

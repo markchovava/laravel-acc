@@ -4,6 +4,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountryOpportunityController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OpportunitySectorController;
 use App\Http\Controllers\RoleController;
@@ -42,6 +44,12 @@ Route::get('/country-opportunity', [CountryOpportunityController::class, 'indexO
 Route::get('/country-sector-opportunity', [CountryOpportunityController::class, 'indexOpportunityByCountrySector']);
 
 
+/* EVENT */
+Route::prefix('event')->group(function() {
+    Route::get('/', [EventController::class, 'index']);
+    Route::get('/{id}', [EventController::class, 'view']);
+});
+
 /* OPPORTUNITY */
 Route::prefix('opportunity')->group(function() {
     Route::get('/', [OpportunityController::class, 'index']);
@@ -55,6 +63,14 @@ Route::prefix('opportunity-sector')->group(function() {
     Route::get('/{id}', [OpportunitySectorController::class, 'view']);
 });    
 Route::get('/opportunity-by-sector-slug', [OpportunitySectorController::class, 'indexOpportunityBySectorSlug']);
+
+/* NEWS */
+Route::prefix('news')->group(function() {
+    Route::get('/', [NewsController::class, 'index']);
+    Route::get('/{id}', [NewsController::class, 'view']);
+});
+Route::get('/news-by-num', [NewsController::class, 'indexByNum']);
+
 
 /* ROLE */
 Route::prefix('role')->group(function() {

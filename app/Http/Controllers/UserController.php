@@ -99,7 +99,7 @@ class UserController extends Controller
         if( $request->hasFile('image') ){
             $image = $request->file('image');
             $image_extension = strtolower($image->getClientOriginalExtension());
-            $image_name = 'sector_p' . date('Yi') . rand(0, 1000) . '.' . $image_extension;
+            $image_name = 'user_' . date('Yi') . rand(0, 1000) . '.' . $image_extension;
             if(!empty($data->image)){
                 if(file_exists( public_path($data->image) )){
                     unlink($data->image);
