@@ -26,20 +26,20 @@ class OpportunityController extends Controller
     }
 
     public function viewBySlug(Request $request){
-        $data = Opportunity::with(['user', 'sectors'])->
+        $data = Opportunity::with(['user', 'country', 'sectors', 'opportunity_images'])->
                 where('slug', $request->slug)->first();
         return new OpportunityResource($data);
     }
 
     public function index(Request $request) {
         if($request->search) {
-            $data = Opportunity::with(['user', 'sectors', 'opportunity_images'])
+            $data = Opportunity::with(['user', 'country', 'sectors', 'opportunity_images'])
                     ->where('name', 'LIKE', '%' . $request->search . '%')
                     ->orderBy('updated_at', 'desc')
                     ->paginate(12);
             return OpportunityResource::collection($data);
         }
-        $data = Opportunity::with(['user', 'sectors', 'opportunity_images'])
+        $data = Opportunity::with(['user', 'country', 'sectors', 'opportunity_images'])
                 ->orderBy('updated_at', 'desc')
                 ->paginate(12);
         return OpportunityResource::collection($data);

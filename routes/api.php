@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountryOpportunityController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MemberOrderController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OpportunityImageController;
@@ -62,6 +64,33 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::post('/{id}', [EventController::class, 'update']);
         Route::delete('/{id}', [EventController::class, 'delete']);
     });
+    Route::get('/event-by-num', [EventController::class, 'indexByNum']);
+
+
+    /* MEMBERSHIP */
+    Route::prefix('membership')->group(function() {
+        Route::get('/', [MembershipController::class, 'index']);
+        Route::post('/', [MembershipController::class, 'store']);
+        Route::get('/{id}', [MembershipController::class, 'view']);
+        Route::post('/{id}', [MembershipController::class, 'update']);
+        Route::delete('/{id}', [MembershipController::class, 'delete']);
+    });
+    Route::get('/membership-all', [MembershipController::class, 'indexAll']);
+    Route::get('/membership-by-slug', [MembershipController::class, 'viewBySlug']);
+    Route::get('/membership-by-num', [MembershipController::class, 'indexByNum']);
+
+
+    /* MEMBER ORDER */
+    Route::prefix('member-order')->group(function() {
+        Route::get('/', [MemberOrderController::class, 'index']);
+        Route::post('/', [MemberOrderController::class, 'store']);
+        Route::get('/{id}', [MemberOrderController::class, 'view']);
+        Route::delete('/{id}', [MemberOrderController::class, 'delete']);
+    });
+    Route::post('/member-order-status/{id}', [MemberOrderController::class, 'statusUpdate']);
+    Route::get('/member-order-by-user', [MemberOrderController::class, 'indexByUser']);
+    Route::post('/member-order-checkout', [MemberOrderController::class, 'checkout']);
+
 
     /* NEWS */
     Route::prefix('news')->group(function() {

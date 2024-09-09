@@ -29,6 +29,8 @@ class User extends Authenticatable
         'country',
         'code',
         'image',
+        'company_name',
+        'profession',
         'created_at',
         'updated_at',
     ];

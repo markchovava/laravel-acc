@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountryOpportunityController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OpportunitySectorController;
@@ -49,6 +50,32 @@ Route::prefix('event')->group(function() {
     Route::get('/', [EventController::class, 'index']);
     Route::get('/{id}', [EventController::class, 'view']);
 });
+Route::get('/event-by-num', [EventController::class, 'indexByNum']);
+
+
+/* MEMBERSHIP */
+Route::prefix('membership')->group(function() {
+    Route::get('/', [MembershipController::class, 'index']);
+    Route::get('/{id}', [MembershipController::class, 'view']);
+});
+Route::get('/membership-all', [MembershipController::class, 'indexAll']);
+Route::get('/membership-by-slug', [MembershipController::class, 'viewBySlug']);
+Route::get('/membership-by-num', [MembershipController::class, 'indexByNum']);
+
+
+/* MEMBER ORDER */
+Route::prefix('member-order')->group(function() {
+    Route::post('/', [MembershipController::class, 'store']);
+    Route::get('/{id}', [MembershipController::class, 'view']);
+});
+
+/* NEWS */
+Route::prefix('news')->group(function() {
+    Route::get('/', [NewsController::class, 'index']);
+    Route::get('/{id}', [NewsController::class, 'view']);
+});
+Route::get('/news-by-num', [NewsController::class, 'indexByNum']);
+
 
 /* OPPORTUNITY */
 Route::prefix('opportunity')->group(function() {
@@ -57,19 +84,13 @@ Route::prefix('opportunity')->group(function() {
 });
 Route::get('/opportunity-view-by-slug', [OpportunityController::class, 'viewBySlug']);
 
+
 /* OPPORTUNITY SECTOR */
 Route::prefix('opportunity-sector')->group(function() {
     Route::get('/', [OpportunitySectorController::class, 'index']);
     Route::get('/{id}', [OpportunitySectorController::class, 'view']);
 });    
 Route::get('/opportunity-by-sector-slug', [OpportunitySectorController::class, 'indexOpportunityBySectorSlug']);
-
-/* NEWS */
-Route::prefix('news')->group(function() {
-    Route::get('/', [NewsController::class, 'index']);
-    Route::get('/{id}', [NewsController::class, 'view']);
-});
-Route::get('/news-by-num', [NewsController::class, 'indexByNum']);
 
 
 /* ROLE */
@@ -80,11 +101,6 @@ Route::prefix('role')->group(function() {
 Route::get('/role-view-by-slug', [RoleController::class, 'viewBySlug']);
 Route::get('/role-all', [RoleController::class, 'indexAll']);
 
-/* USER */
-Route::prefix('user')->group(function() {
-    Route::get('/', [UserController::class, 'index']);
-    Route::get('/{id}', [UserController::class, 'view']);
-});
 
 /* SECTOR */
 Route::prefix('sector')->group(function() {
@@ -92,3 +108,10 @@ Route::prefix('sector')->group(function() {
     Route::get('/{id}', [SectorController::class, 'view']);
 });
 Route::get('/sector-all', [SectorController::class, 'indexAll']);
+
+
+/* USER */
+Route::prefix('user')->group(function() {
+    Route::get('/', [UserController::class, 'index']);
+    Route::get('/{id}', [UserController::class, 'view']);
+});

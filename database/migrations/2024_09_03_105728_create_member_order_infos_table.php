@@ -9,26 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      * 
-     *  
+     * 
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('member_order_infos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('role_level')->nullable();
+            $table->bigInteger('user_id')->nullable();
+            $table->bigInteger('member_order_id')->nullable();
+            $table->bigInteger('membership_id')->nullable();
             $table->string('name')->nullable();
-            $table->longText('gender')->nullable();
-            $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->longText('address')->nullable();
             $table->string('country')->nullable();
-            $table->string('company_name')->nullable();
+            $table->longText('address')->nullable();
+            $table->string('email')->nullable();
             $table->string('profession')->nullable();
-            $table->string('code')->nullable();
-            $table->string('password');
-            $table->string('image')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->string('company_name')->nullable();
             $table->timestamps();
         });
     }
@@ -38,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('member_order_infos');
     }
 };

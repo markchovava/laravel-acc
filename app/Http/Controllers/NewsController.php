@@ -43,6 +43,7 @@ class NewsController extends Controller
         $data->title = $request->title;
         $data->description = $request->description;
         $data->date = $request->date;
+        $data->location = $request->location;
         $data->priority = $request->priority;
         $data->slug = $request->slug;
         $data->status = $request->status;
@@ -70,6 +71,7 @@ class NewsController extends Controller
         $data->title = $request->title;
         $data->description = $request->description;
         $data->date = $request->date;
+        $data->location = $request->location;
         $data->priority = $request->priority;
         $data->slug = $request->slug;
         $data->status = $request->status;

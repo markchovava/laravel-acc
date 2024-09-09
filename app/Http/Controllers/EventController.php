@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
     
-    
+    public function indexByNum(Request $request) {
+        $data = Event::orderBy('priority', 'asc')->paginate($request->num);
+        return EventResource::collection($data);
+    }
+
     public function index(Request $request) {
         if(!empty($request->search)){
             $data = Event::with(['user'])
