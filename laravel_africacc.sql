@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2024 at 03:21 PM
+-- Generation Time: Sep 10, 2024 at 02:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -438,7 +438,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2024_09_02_173120_create_memberships_table', 6),
 (17, '2024_09_03_105643_create_members_table', 7),
 (18, '2024_09_03_105651_create_member_orders_table', 7),
-(19, '2024_09_03_105728_create_member_order_infos_table', 7);
+(19, '2024_09_03_105728_create_member_order_infos_table', 7),
+(20, '2024_09_10_084052_create_partners_table', 8),
+(21, '2024_09_10_084231_create_testimonials_table', 8);
 
 -- --------------------------------------------------------
 
@@ -601,6 +603,31 @@ INSERT INTO `opportunity_sectors` (`id`, `opportunity_id`, `sector_id`, `user_id
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `partners`
+--
+
+CREATE TABLE `partners` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `priority` bigint(20) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `partners`
+--
+
+INSERT INTO `partners` (`id`, `user_id`, `priority`, `name`, `image`, `link`, `created_at`, `updated_at`) VALUES
+(2, 2, 1, 'Partner 2', 'assets/img/partner/partner_202459819.jpg', 'https://www.google.com/', '2024-09-10 08:59:27', '2024-09-10 08:59:27'),
+(3, 2, 8, 'Partner 1', 'assets/img/partner/partner_202401482.jpg', 'https://www.facebook.com/', '2024-09-10 09:01:24', '2024-09-10 09:01:49');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_reset_tokens`
 --
 
@@ -634,7 +661,7 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(22, 'App\\Models\\User', 2, 'cho@email.com', '56a7adfa0534216a01a6701c426250fe776cd02269a98e2bd9285f2dc1426b83', '[\"*\"]', '2024-09-09 07:38:48', NULL, '2024-09-03 11:13:55', '2024-09-09 07:38:48');
+(22, 'App\\Models\\User', 2, 'cho@email.com', '56a7adfa0534216a01a6701c426250fe776cd02269a98e2bd9285f2dc1426b83', '[\"*\"]', '2024-09-10 09:39:23', NULL, '2024-09-03 11:13:55', '2024-09-10 09:39:23');
 
 -- --------------------------------------------------------
 
@@ -694,6 +721,32 @@ INSERT INTO `sectors` (`id`, `user_id`, `name`, `description`, `priority`, `port
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `testimonials`
+--
+
+CREATE TABLE `testimonials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `priority` bigint(20) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `testimonials`
+--
+
+INSERT INTO `testimonials` (`id`, `user_id`, `priority`, `name`, `email`, `description`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 'Mark Chovava', 'markchovava@gmail.com', 'Very Good.', '2024-09-10 07:56:25', '2024-09-10 09:38:22'),
+(2, 2, 2, 'Mark', 'mark@email.com', 'I highly recommend this business.', '2024-09-10 08:13:16', '2024-09-10 09:38:06'),
+(3, 2, 3, 'Customer', 'customer@email.com', 'Their customer service is second to none.', '2024-09-10 08:15:01', '2024-09-10 09:37:51');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -722,7 +775,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_level`, `name`, `gender`, `email`, `phone`, `address`, `country`, `company_name`, `profession`, `code`, `password`, `image`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 1, 'Admin', 'Male', 'admin@email.com', '45', '67', 'Zimbabwe', 'first', 'Good', '12345678', '$2y$12$WEG2IL8MRnu8SPN3e1g4QeyCK4TnSqVejHUyzolabZswEvdC7.ul6', 'assets/img/user/sector_p202457650.jpg', NULL, NULL, '2024-08-23 14:53:08', '2024-08-30 07:27:36'),
+(2, 1, 'Admin', 'Male', 'admin@email.com', '45', '67', 'Zimbabwe', 'first', 'Good', '12345678', '$2y$12$WEG2IL8MRnu8SPN3e1g4QeyCK4TnSqVejHUyzolabZswEvdC7.ul6', 'assets/img/user/user_202421748.jpg', NULL, NULL, '2024-08-23 14:53:08', '2024-09-09 14:21:42'),
 (3, 3, 'Mark Chovava', 'Male', 'markchovava@gmail.com', '0782210021', '14949  Tynwald South, Harare, Zimbabwe', 'South Africa', 'second', 'stron', 'JjuiaDYp', '$2y$12$x8N6nH1J4re/3njS6G.J9.MS4t0KRElVSV1djkvA0QAXvwg9XF5NC', 'assets/img/user/sector_p202457650.jpg', NULL, NULL, '2024-08-27 08:15:22', '2024-08-27 14:02:22');
 
 --
@@ -803,6 +856,12 @@ ALTER TABLE `opportunity_sectors`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `partners`
+--
+ALTER TABLE `partners`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
@@ -826,6 +885,12 @@ ALTER TABLE `roles`
 -- Indexes for table `sectors`
 --
 ALTER TABLE `sectors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `testimonials`
+--
+ALTER TABLE `testimonials`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -885,7 +950,7 @@ ALTER TABLE `member_order_infos`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -912,6 +977,12 @@ ALTER TABLE `opportunity_sectors`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `partners`
+--
+ALTER TABLE `partners`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
@@ -928,6 +999,12 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `sectors`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `testimonials`
+--
+ALTER TABLE `testimonials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
