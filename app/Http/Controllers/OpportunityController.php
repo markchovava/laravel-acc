@@ -31,6 +31,13 @@ class OpportunityController extends Controller
         return new OpportunityResource($data);
     }
 
+    public function indexByNum(Request $request) {
+        $data = Opportunity::with(['user', 'country', 'sectors', 'opportunity_images'])
+                ->orderBy('priority', 'asc')
+                ->paginate($request->num);
+        return OpportunityResource::collection($data);
+    }
+
     public function index(Request $request) {
         if($request->search) {
             $data = Opportunity::with(['user', 'country', 'sectors', 'opportunity_images'])

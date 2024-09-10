@@ -11,6 +11,7 @@ use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OpportunitySectorController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectorController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,14 +45,12 @@ Route::get('/country-all', [CountryController::class, 'indexAll']);
 Route::get('/country-opportunity', [CountryOpportunityController::class, 'indexOpportunityByCountry']);
 Route::get('/country-sector-opportunity', [CountryOpportunityController::class, 'indexOpportunityByCountrySector']);
 
-
 /* EVENT */
 Route::prefix('event')->group(function() {
     Route::get('/', [EventController::class, 'index']);
     Route::get('/{id}', [EventController::class, 'view']);
 });
 Route::get('/event-by-num', [EventController::class, 'indexByNum']);
-
 
 /* MEMBERSHIP */
 Route::prefix('membership')->group(function() {
@@ -61,7 +60,6 @@ Route::prefix('membership')->group(function() {
 Route::get('/membership-all', [MembershipController::class, 'indexAll']);
 Route::get('/membership-by-slug', [MembershipController::class, 'viewBySlug']);
 Route::get('/membership-by-num', [MembershipController::class, 'indexByNum']);
-
 
 /* MEMBER ORDER */
 Route::prefix('member-order')->group(function() {
@@ -76,14 +74,13 @@ Route::prefix('news')->group(function() {
 });
 Route::get('/news-by-num', [NewsController::class, 'indexByNum']);
 
-
 /* OPPORTUNITY */
 Route::prefix('opportunity')->group(function() {
     Route::get('/', [OpportunityController::class, 'index']);
     Route::get('/{id}', [OpportunityController::class, 'view']);
 });
 Route::get('/opportunity-view-by-slug', [OpportunityController::class, 'viewBySlug']);
-
+Route::get('/opportunity-index-by-num', [OpportunityController::class, 'indexByNum']);
 
 /* OPPORTUNITY SECTOR */
 Route::prefix('opportunity-sector')->group(function() {
@@ -91,7 +88,6 @@ Route::prefix('opportunity-sector')->group(function() {
     Route::get('/{id}', [OpportunitySectorController::class, 'view']);
 });    
 Route::get('/opportunity-by-sector-slug', [OpportunitySectorController::class, 'indexOpportunityBySectorSlug']);
-
 
 /* ROLE */
 Route::prefix('role')->group(function() {
@@ -101,6 +97,12 @@ Route::prefix('role')->group(function() {
 Route::get('/role-view-by-slug', [RoleController::class, 'viewBySlug']);
 Route::get('/role-all', [RoleController::class, 'indexAll']);
 
+/* TESTIMONIAL */
+Route::prefix('testimonial')->group(function() {
+    Route::get('/', [TestimonialController::class, 'index']);
+    Route::get('/{id}', [TestimonialController::class, 'view']);
+});
+Route::get('/testimonial-index-by-num', [TestimonialController::class, 'indexByNum']);
 
 /* SECTOR */
 Route::prefix('sector')->group(function() {
@@ -108,7 +110,6 @@ Route::prefix('sector')->group(function() {
     Route::get('/{id}', [SectorController::class, 'view']);
 });
 Route::get('/sector-all', [SectorController::class, 'indexAll']);
-
 
 /* USER */
 Route::prefix('user')->group(function() {

@@ -10,8 +10,10 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OpportunityImageController;
 use App\Http\Controllers\OpportunitySectorController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectorController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +54,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     });
     Route::get('/country-view-by-slug', [CountryController::class, 'viewBySlug']);
     Route::get('/country-all', [CountryController::class, 'indexAll']);
-
     Route::get('/country-opportunity', [CountryOpportunityController::class, 'indexOpportunityByCountry']);
     Route::get('/country-opportunity-sector', [CountryOpportunityController::class, 'indexOpportunityByCountrySector']);
     
@@ -66,7 +67,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     });
     Route::get('/event-by-num', [EventController::class, 'indexByNum']);
 
-
     /* MEMBERSHIP */
     Route::prefix('membership')->group(function() {
         Route::get('/', [MembershipController::class, 'index']);
@@ -79,7 +79,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/membership-by-slug', [MembershipController::class, 'viewBySlug']);
     Route::get('/membership-by-num', [MembershipController::class, 'indexByNum']);
 
-
     /* MEMBER ORDER */
     Route::prefix('member-order')->group(function() {
         Route::get('/', [MemberOrderController::class, 'index']);
@@ -91,7 +90,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/member-order-by-user', [MemberOrderController::class, 'indexByUser']);
     Route::post('/member-order-checkout', [MemberOrderController::class, 'checkout']);
 
-
     /* NEWS */
     Route::prefix('news')->group(function() {
         Route::get('/', [NewsController::class, 'index']);
@@ -101,6 +99,23 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::delete('/{id}', [NewsController::class, 'delete']);
     });
 
+    /* PARTNER */
+    Route::prefix('partner')->group(function() {
+        Route::get('/', [PartnerController::class, 'index']);
+        Route::post('/', [PartnerController::class, 'store']);
+        Route::get('/{id}', [PartnerController::class, 'view']);
+        Route::post('/{id}', [PartnerController::class, 'update']);
+        Route::delete('/{id}', [PartnerController::class, 'delete']);
+    });
+
+    /* TESTIMONIAL */
+    Route::prefix('testimonial')->group(function() {
+        Route::get('/', [TestimonialController::class, 'index']);
+        Route::post('/', [TestimonialController::class, 'store']);
+        Route::get('/{id}', [TestimonialController::class, 'view']);
+        Route::post('/{id}', [TestimonialController::class, 'update']);
+        Route::delete('/{id}', [TestimonialController::class, 'delete']);
+    });
 
     /* USER */
     Route::prefix('user')->group(function() {
