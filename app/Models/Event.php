@@ -17,6 +17,7 @@ class Event extends Model
         'location',
         'date',
         'duration',
+        'joining_fee',
         'priority',
         'slug',
         'status',
@@ -26,6 +27,15 @@ class Event extends Model
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function users(){
+        return $this->belongsToMany(User::class, 'user_events', 'event_id', 'user_id')
+            ->withTimestamps();
+    }
+
+    public function event_users(){
+        return $this->hasMany(UserEvent::class, 'event_id', 'id');
     }
 
 }

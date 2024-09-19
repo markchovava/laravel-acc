@@ -35,7 +35,20 @@ class User extends Authenticatable
         'updated_at',
     ];
 
-    
+    public function opportunities(){
+        return $this->belongsToMany(Opportunity::class, 'opportunity_sectors', 'sector_id', 'opportunity_id')
+            ->withTimestamps();
+    }
+
+    public function events(){
+        return $this->belongsToMany(Event::class, 'user_events', 'user_id', 'event_id')
+            ->withTimestamps();
+    }
+
+    public function user_events(){
+        return $this->hasMany(UserEvent::class, 'user_id', 'id');
+    }
+
     public function role(){
         return $this->belongsTo(Role::class, 'role_level', 'level');
     }

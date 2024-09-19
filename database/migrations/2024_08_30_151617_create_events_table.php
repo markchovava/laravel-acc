@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('date')->nullable();
             $table->longText('location')->nullable();
+            $table->bigInteger('joining_fee')->nullable();
             $table->string('duration')->nullable();
             $table->integer('priority')->nullable();
             $table->longText('description')->nullable();

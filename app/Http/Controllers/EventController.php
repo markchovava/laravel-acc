@@ -44,6 +44,8 @@ class EventController extends Controller
         $data->description = $request->description;
         $data->date = $request->date;
         $data->status = $request->status;
+        $data->joining_fee = $request->joining_fee;
+        $data->location = $request->location;
         $data->duration = $request->duration;
         $data->priority = $request->priority;
         $data->slug = $request->slug;
@@ -66,6 +68,8 @@ class EventController extends Controller
         $data->description = $request->description;
         $data->date = $request->date;
         $data->status = $request->status;
+        $data->joining_fee = $request->joining_fee;
+        $data->location = $request->location;
         $data->duration = $request->duration;
         $data->priority = $request->priority;
         $data->slug = $request->slug;

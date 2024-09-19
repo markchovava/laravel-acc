@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->longText('description')->nullable();
             $table->longText('short_description')->nullable();
-            $table->bigInteger('amount')->nullable();
-            $table->bigInteger('expected_return')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('expected_return')->nullable();
             $table->timestamps();
         });
     }

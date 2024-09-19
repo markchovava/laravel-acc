@@ -19,7 +19,11 @@ class MemberOrderController extends Controller
 
     public function statusUpdate(Request $request, $id) {
         $data = MemberOrder::find($id);
-        $data->status = $request->status;
+        if($request->status == 'Active' && $data->status == 'Processing') {
+            $data->status = $request->status;
+            $data->start_date = date('Y-m-d');
+            $data->end_date =  date('Y-m-d', strtotime( $data->start_date . ' + ' . $data->duration . ' months'));
+        }
         $data->updated_at = now();
         $data->save();
         /*  */

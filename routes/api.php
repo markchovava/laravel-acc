@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountryOpportunityController;
+use App\Http\Controllers\EventCartController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventOrderController;
 use App\Http\Controllers\MemberOrderController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\NewsController;
@@ -66,6 +68,25 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::delete('/{id}', [EventController::class, 'delete']);
     });
     Route::get('/event-by-num', [EventController::class, 'indexByNum']);
+
+    /* EVENT CART */
+    Route::prefix('event-cart')->group(function() {
+        Route::get('/', [EventCartController::class, 'index']);
+        Route::post('/', [EventCartController::class, 'store']);
+        Route::delete('/{id}', [EventCartController::class, 'delete']);
+    });
+    Route::get('/event-cart-by-token', [EventCartController::class, 'viewByToken']);
+
+    /* EVENT ORDER */
+    Route::prefix('event-order')->group(function() {
+        Route::get('/', [EventOrderController::class, 'index']);
+        Route::post('/', [EventOrderController::class, 'store']);
+        Route::get('/{id}', [EventOrderController::class, 'view']);
+        Route::post('/{id}', [EventOrderController::class, 'update']);
+        Route::delete('/{id}', [EventOrderController::class, 'delete']);
+    });
+    Route::get('/event-order-by-user', [EventOrderController::class, 'indexByUser']);
+    Route::post('/event-order-status', [EventOrderController::class, 'statusUpdate']);
 
     /* MEMBERSHIP */
     Route::prefix('membership')->group(function() {

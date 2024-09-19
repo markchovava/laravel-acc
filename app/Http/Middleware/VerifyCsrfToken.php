@@ -16,6 +16,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'http://127.0.0.1:8012/login',
         'http://127.0.0.1:8012/register',
+        'http://127.0.0.1:8012/event-cart',
+        'http://127.0.0.1:8012/event-cart/*',
     ];
 
 

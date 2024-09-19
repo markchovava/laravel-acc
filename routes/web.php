@@ -4,6 +4,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountryOpportunityController;
+use App\Http\Controllers\EventCartController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\NewsController;
@@ -51,6 +52,14 @@ Route::prefix('event')->group(function() {
     Route::get('/{id}', [EventController::class, 'view']);
 });
 Route::get('/event-by-num', [EventController::class, 'indexByNum']);
+
+/* EVENT CART */
+Route::prefix('event-cart')->group(function() {
+    Route::get('/', [EventCartController::class, 'index']);
+    Route::post('/', [EventCartController::class, 'store']);
+    Route::delete('/{id}', [EventCartController::class, 'delete']);
+});
+Route::get('/event-cart-by-token', [EventCartController::class, 'viewByToken']);
 
 /* MEMBERSHIP */
 Route::prefix('membership')->group(function() {
@@ -110,6 +119,7 @@ Route::prefix('sector')->group(function() {
     Route::get('/{id}', [SectorController::class, 'view']);
 });
 Route::get('/sector-all', [SectorController::class, 'indexAll']);
+Route::get('/sector-view-by-slug', [SectorController::class, 'viewBySlug']);
 
 /* USER */
 Route::prefix('user')->group(function() {

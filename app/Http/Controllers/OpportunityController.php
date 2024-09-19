@@ -65,7 +65,7 @@ class OpportunityController extends Controller
         $data->name = $request->name;
         $data->slug = $request->slug;
         $data->priority = $request->priority;
-        $data->status = 'Processing';
+        $data->status = 'Available';
         $data->description = $request->description;
         $data->short_description = $request->short_description;
         $data->amount = $request->amount;
