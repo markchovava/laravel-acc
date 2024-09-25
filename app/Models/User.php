@@ -35,6 +35,7 @@ class User extends Authenticatable
         'updated_at',
     ];
 
+
     public function opportunities(){
         return $this->belongsToMany(Opportunity::class, 'opportunity_sectors', 'sector_id', 'opportunity_id')
             ->withTimestamps();
@@ -45,8 +46,8 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
-    public function user_events(){
-        return $this->hasMany(UserEvent::class, 'user_id', 'id');
+    public function membership(){
+        return $this->belongsTo(Membership::class, 'membership_id', 'id');
     }
 
     public function role(){

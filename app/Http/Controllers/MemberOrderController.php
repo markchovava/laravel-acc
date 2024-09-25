@@ -41,7 +41,12 @@ class MemberOrderController extends Controller
         $data->status = 'Processing';
         $data->updated_at = now();
         $data->save();
-
+        /*  */
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
+        $user->membership_id = $request->membership_id;
+        $user->updated_at = now();
+        $user->save();
         return response()->json([
             'status' => 1,
             'data' => new MemberOrderResource($data),

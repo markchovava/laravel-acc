@@ -38,7 +38,7 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-        $user = User::where('email', $request->email)->first();
+        $user = User::with(['membership'])->where('email', $request->email)->first();
         /* Check Email... */
         if(!isset($user)){
             return response()->json([
@@ -53,14 +53,20 @@ class AuthController extends Controller
                 'status' => 2,
             ]);
         }
+        /* Dealing with Membership. */
+        $membership = null;
+        if($user->membership()->exists()){
+            $membership = $user->membership->level;
+        }
+        /*  */
         return response()->json([
             'status' => 1,
             'message' => 'Login Successful.',
             'auth_token' => $user->createToken($user->email)->plainTextToken,
             'role_level' => $user->role_level,
+            'membership' => $membership,
         ]);
     }
-
 
     public function password(Request $request){
         $user_id = Auth::user()->id;
@@ -75,15 +81,13 @@ class AuthController extends Controller
         ]);
     }
 
-
     public function view(){
         $user_id = Auth::user()->id;
-        $data = User::with(['role'])->find($user_id);
+        $data = User::with(['role', 'membership'])->find($user_id);
         return response()->json([
             'data' => new UserResource($data),
         ]);
     }
-
 
     public function update(Request $request){
         $user_id = Auth::user()->id;
