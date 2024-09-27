@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
+use App\Models\EventCart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class AuthController extends Controller
         $data = new User();
         $data->name = $request->name;
         $data->email = $request->email;
-        /* $data->code = $request->password; */
+        $data->code = $request->password;
         $data->password = Hash::make($request->password);
         $data->role_level = 4;
         $data->updated_at = now();
@@ -160,7 +161,14 @@ class AuthController extends Controller
     }
 
 
-    public function logout(){
+    public function logout(Request $request){
+        if(!empty($request->cart_token)) {
+            $event_cart = EventCart::where('cart_token', $request->cart_token)->get();
+            if(isset($event_cart)) {
+                EventCart::where('cart_token', $request->cart_token)->delete();
+            }
+        }
+        /*  */
         Auth::user()->currentAccessToken()->delete();
         return response()->json([
             'status' => 1,

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2024 at 06:03 PM
+-- Generation Time: Sep 27, 2024 at 04:27 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -410,6 +410,37 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `investments`
+--
+
+CREATE TABLE `investments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `opportunity_id` bigint(20) DEFAULT NULL,
+  `status` varchar(265) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `address` mediumtext DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `profession` varchar(265) DEFAULT NULL,
+  `company_name` varchar(265) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `investments`
+--
+
+INSERT INTO `investments` (`id`, `user_id`, `opportunity_id`, `status`, `name`, `email`, `address`, `phone`, `country`, `profession`, `company_name`, `created_at`, `updated_at`) VALUES
+(6, 2, 17, 'Processing', 'Admin', 'admin@email.com', '67', '45', 'Zimbabwe', 'Good', 'first', '2024-09-27 08:53:45', '2024-09-27 08:53:45'),
+(7, 2, 14, 'Processing', 'Admin', 'admin@email.com', '67', '45', 'Zimbabwe', 'Good', 'first', '2024-09-27 09:27:30', '2024-09-27 09:27:30'),
+(8, 2, 15, 'Processing', 'Admin', 'admin@email.com', '67', '45', 'Zimbabwe', 'Good', 'first', '2024-09-27 09:31:00', '2024-09-27 09:31:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `members`
 --
 
@@ -552,7 +583,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (21, '2024_09_10_084231_create_testimonials_table', 8),
 (22, '2024_09_17_124536_create_user_events_table', 9),
 (25, '2024_09_18_093603_create_event_orders_table', 10),
-(26, '2024_09_18_111337_create_event_carts_table', 10);
+(26, '2024_09_18_111337_create_event_carts_table', 10),
+(27, '2024_09_25_134956_create_investments_table', 11);
 
 -- --------------------------------------------------------
 
@@ -616,15 +648,15 @@ CREATE TABLE `opportunities` (
 --
 
 INSERT INTO `opportunities` (`id`, `user_id`, `country_id`, `name`, `slug`, `priority`, `status`, `description`, `short_description`, `amount`, `expected_return`, `created_at`, `updated_at`) VALUES
-(8, 2, 10, 'Construction of multifunctional farms', 'op', 1, 'Processing', 'Grain farming and livestock rearing are sectors that are under developed in the country. Build Operate and Transfer model is the preferred model.', 'Construction of multi-functional farms in 4 districts', '8000000', '10000000', '2024-08-28 06:43:42', '2024-08-28 11:35:28'),
-(9, 2, 10, 'Construction of a Dairy Complex', 'construction-of-a-dairy-complex', 4, 'Processing', 'Chad imports 10000tons of dairy products annually. Regardless of the fact that the weather is appropriate for diary production- local product is very low and characterised by a variety of small players- A ready local market and potential export to neighbouring countries characterises this investment opportunity.', 'A dairy complex needs to be built to supply 30% of the countries dairy requirements.', '1500000', '10000000', '2024-08-28 08:32:14', '2024-08-28 11:33:34'),
-(10, 2, 10, 'Setup an Oil Refinery', 'setup-an-oil-refinery', 2, 'Processing', 'Chad is now a great producer of crude oil. Except for the new oil refinery in Nigeria setup by Dangote- there is no other significant sized oil refinery in Africa. The market is too big to fulfil and oil will remain a major source of energy for at least the next 50 years. Invest in an Oil Refinery and reap the rewards.', 'Oil Refinery setup', '50000000', '100000000', '2024-08-28 11:37:50', '2024-08-28 11:37:50'),
-(11, 2, 11, 'An offer of Cashew Nuts for export', 'an-offer-of-cashew-nuts-for-export', 6, 'Processing', 'The cashew nuts are export quality and are going for $800 per ton. Compared to international prices – consistent supply is available for a long term contract. Samples of the nuts can be provided as well. This is a great investment opportunity that is easy to implement with quick', 'Non GMO high quality pre-screened and pre-packed cashew nuts are available export.', '8000000', '40000000', '2024-08-28 11:40:43', '2024-08-28 11:41:23'),
-(13, 2, 12, 'Creation of a National Airline', 'creation-of-a-national-airline', 3, 'Processing', 'Consultation – provision of detailed requirements for the setup of a national airline.  The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', 'The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', '3000000', '4000000', '2024-08-28 11:47:14', '2024-08-28 11:47:14'),
-(14, 2, 13, 'Creation of a National Airline', 'creation-of-a-national-airline', 2, 'Processing', 'Consultation – provision of detailed requirements for the setup of a national airline. Registering the airline internationally. Implementation – provision of aircrafts for leasing or outright purchase. Provision of other requirements for the airline to become operational and internationally recognised.', 'The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', '300000', '700000', '2024-08-28 11:49:37', '2024-08-28 11:49:37'),
-(15, 2, 8, 'Construction of 10 health centres', 'construction-of-10-health-centres', 5, 'Processing', 'The project is NGO funded and in partnership with the government. An investor with prior experience in the Health sector is preferred.', 'The investor is required to construct 10 health facilities as well as purchase the health equipment.', '11500000', '20000000', '2024-08-28 11:56:31', '2024-08-28 11:56:31'),
-(16, 2, 11, 'Creation of a National Airline', 'creation-of-a-national-airline', 6, 'Processing', 'The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', 'The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', '1000000', '3000000', '2024-08-28 11:59:17', '2024-08-28 11:59:17'),
-(17, 2, 14, 'Supply of an aircraft', 'supply-of-an-aircraft', 1, 'Archived', 'An investor is sought after that will supply an aircraft to operate on the given routes on a long term lease. The option to sell the aircraft outright on a rent to own scheme is negotiable. Maintenance services of the aircraft are an essential part of the deal. A straightforward investment opportunity not to miss.', 'An aircraft is required to operate between Freetown-London, Freetown – Bissau and Lisbon-London', '2m', '4m in 3 years', '2024-08-28 12:01:28', '2024-09-13 16:26:38');
+(8, 2, 10, 'Construction of multifunctional farms', 'op', 1, 'Available', 'Grain farming and livestock rearing are sectors that are under developed in the country. Build Operate and Transfer model is the preferred model.', 'Construction of multi-functional farms in 4 districts', '1m', '3m in 3 years', '2024-08-28 06:43:42', '2024-08-28 11:35:28'),
+(9, 2, 10, 'Construction of a Dairy Complex', 'construction-of-a-dairy-complex', 4, 'Available', 'Chad imports 10000tons of dairy products annually. Regardless of the fact that the weather is appropriate for diary production- local product is very low and characterised by a variety of small players- A ready local market and potential export to neighbouring countries characterises this investment opportunity.', 'A dairy complex needs to be built to supply 30% of the countries dairy requirements.', '250k', '2m in 2 years', '2024-08-28 08:32:14', '2024-08-28 11:33:34'),
+(10, 2, 10, 'Setup an Oil Refinery', 'setup-an-oil-refinery', 2, 'Available', 'Chad is now a great producer of crude oil. Except for the new oil refinery in Nigeria setup by Dangote- there is no other significant sized oil refinery in Africa. The market is too big to fulfil and oil will remain a major source of energy for at least the next 50 years. Invest in an Oil Refinery and reap the rewards.', 'Oil Refinery setup', '2m', '4m in 2 years', '2024-08-28 11:37:50', '2024-08-28 11:37:50'),
+(11, 2, 11, 'An offer of Cashew Nuts for export', 'an-offer-of-cashew-nuts-for-export', 6, 'Available', 'The cashew nuts are export quality and are going for $800 per ton. Compared to international prices – consistent supply is available for a long term contract. Samples of the nuts can be provided as well. This is a great investment opportunity that is easy to implement with quick', 'Non GMO high quality pre-screened and pre-packed cashew nuts are available export.', '70k', '350k in 1 year', '2024-08-28 11:40:43', '2024-08-28 11:41:23'),
+(13, 2, 12, 'Creation of a National Airline', 'creation-of-a-national-airline', 3, 'Available', 'Consultation – provision of detailed requirements for the setup of a national airline.  The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', 'The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', '40k', '1m in 2 years', '2024-08-28 11:47:14', '2024-08-28 11:47:14'),
+(14, 2, 13, 'Creation of a National Airline', 'creation-of-a-national-airline', 2, 'Available', 'Consultation – provision of detailed requirements for the setup of a national airline. Registering the airline internationally. Implementation – provision of aircrafts for leasing or outright purchase. Provision of other requirements for the airline to become operational and internationally recognised.', 'The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', '60m', '200m in 10 years', '2024-08-28 11:49:37', '2024-08-28 11:49:37'),
+(15, 2, 8, 'Construction of 10 health centres', 'construction-of-10-health-centres', 5, 'Available', 'The project is NGO funded and in partnership with the government. An investor with prior experience in the Health sector is preferred.', 'The investor is required to construct 10 health facilities as well as purchase the health equipment.', '100k', '2m in 5 years', '2024-08-28 11:56:31', '2024-08-28 11:56:31'),
+(16, 2, 11, 'Creation of a National Airline', 'creation-of-a-national-airline', 6, 'Available', 'The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', 'The Central African Republic has decided to start a national airline that will serve both the public and VIP civil servants. Consultancy required as well as the actually implementation of the project', '23k', '123k in 2 years', '2024-08-28 11:59:17', '2024-08-28 11:59:17'),
+(17, 2, 14, 'Supply of an aircraft', 'supply-of-an-aircraft', 1, 'Available', 'An investor is sought after that will supply an aircraft to operate on the given routes on a long term lease. The option to sell the aircraft outright on a rent to own scheme is negotiable. Maintenance services of the aircraft are an essential part of the deal. A straightforward investment opportunity not to miss.', 'An aircraft is required to operate between Freetown-London, Freetown – Bissau and Lisbon-London', '2m', '4m in 3 years', '2024-08-28 12:01:28', '2024-09-13 16:26:38');
 
 -- --------------------------------------------------------
 
@@ -773,7 +805,7 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(34, 'App\\Models\\User', 2, 'admin@email.com', '8936012506e424ebccdaa7b419bd25aa1fcfe1a773d509744b67e9cf1962d2d4', '[\"*\"]', '2024-09-24 12:31:07', NULL, '2024-09-24 11:56:24', '2024-09-24 12:31:07');
+(39, 'App\\Models\\User', 6, 'test@email.com', '85db503fbc147c098885b40542a2728a66cb96365a9bcbaa13a0695aefb3d6e8', '[\"*\"]', '2024-09-27 11:59:49', NULL, '2024-09-27 11:41:12', '2024-09-27 11:59:49');
 
 -- --------------------------------------------------------
 
@@ -890,7 +922,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `role_level`, `membership_id`, `name`, `gender`, `email`, `phone`, `address`, `country`, `company_name`, `profession`, `code`, `password`, `image`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 1, 2, 'Admin', 'Male', 'admin@email.com', '45', '67', 'Zimbabwe', 'first', 'Good', '12345678', '$2y$12$WEG2IL8MRnu8SPN3e1g4QeyCK4TnSqVejHUyzolabZswEvdC7.ul6', 'assets/img/user/user_202421748.jpg', NULL, NULL, '2024-08-23 14:53:08', '2024-09-09 14:21:42'),
 (3, 3, NULL, 'Mark Chovava', 'Male', 'markchovava@gmail.com', '0782210021', '14949  Tynwald South, Harare, Zimbabwe', 'South Africa', 'second', 'stron', 'JjuiaDYp', '$2y$12$x8N6nH1J4re/3njS6G.J9.MS4t0KRElVSV1djkvA0QAXvwg9XF5NC', 'assets/img/user/sector_p202457650.jpg', NULL, NULL, '2024-08-27 08:15:22', '2024-08-27 14:02:22'),
-(4, 4, NULL, 'Test', NULL, 'test@email.com', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$12$sijXxcueTX0GNEravIuaZeIB3Tc3bO0bhHLvFsNRihoej.33G0aAu', NULL, NULL, NULL, '2024-09-10 14:36:49', '2024-09-10 14:36:49');
+(4, 4, NULL, 'Mark', 'Male', 'mark@email.com', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$12$sijXxcueTX0GNEravIuaZeIB3Tc3bO0bhHLvFsNRihoej.33G0aAu', NULL, NULL, NULL, '2024-09-10 14:36:49', '2024-09-10 14:36:49'),
+(6, 4, NULL, 'Test', NULL, 'test@email.com', NULL, NULL, NULL, NULL, NULL, '12345678', '$2y$12$UZwRbZ16qqngyUh/gjjSJuKdabc7wXPi1jiw4KGif2XOqgu3x58yG', NULL, NULL, NULL, '2024-09-27 11:41:12', '2024-09-27 11:41:12');
 
 -- --------------------------------------------------------
 
@@ -938,6 +971,12 @@ ALTER TABLE `event_orders`
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `investments`
+--
+ALTER TABLE `investments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `members`
@@ -1064,7 +1103,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `event_carts`
 --
 ALTER TABLE `event_carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `event_orders`
@@ -1077,6 +1116,12 @@ ALTER TABLE `event_orders`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `investments`
+--
+ALTER TABLE `investments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `members`
@@ -1106,7 +1151,7 @@ ALTER TABLE `member_order_infos`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -1142,7 +1187,7 @@ ALTER TABLE `partners`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1166,7 +1211,7 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_events`

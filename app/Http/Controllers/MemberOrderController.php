@@ -142,6 +142,7 @@ class MemberOrderController extends Controller
                 'status' => 1,
                 'message' => 'Data saved successfully.',
                 'data' => new MemberOrderResource($data),
+                'member_order' => $order->id,
             ]);
         }
     }
