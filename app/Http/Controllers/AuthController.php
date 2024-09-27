@@ -30,10 +30,21 @@ class AuthController extends Controller
         $data->updated_at = now();
         $data->created_at = now();
         $data->save();
+        /*  */
+        $user = User::with(['membership'])->where('email', $request->email)->first();
+        /*  */
+        /* Dealing with Membership. */
+        $membership = null;
+        if($user->membership()->exists()){
+            $membership = $user->membership->level;
+        }
         return response()->json([
             'status' => 1,
             'message' => 'Created Successfully.',
             'data' => new UserResource($data),
+            'auth_token' => $user->createToken($user->email)->plainTextToken,
+            'role_level' => $user->role_level,
+            'membership' => $membership,
         ]);
     }
 

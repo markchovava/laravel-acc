@@ -32,6 +32,10 @@ class Opportunity extends Model
         return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 
+    public function investment(){
+        return $this->hasOne(Investment::class, 'opportunity_id', 'id');
+    }
+
     public function sectors(){
         return $this->belongsToMany(Sector::class, 'opportunity_sectors', 'opportunity_id', 'sector_id')
             ->withTimestamps();

@@ -29,6 +29,7 @@ class OpportunityResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'country' => new CountryResource($this->whenLoaded('country')),
+            'investment' => new InvestmentResource($this->whenLoaded('investment')),
             'user' => new UserResource($this->whenLoaded('user')),
             'opportunity_images' => OpportunityImageResource::collection($this->whenLoaded('opportunity_images')),
             'sectors' => SectorResource::collection($this->whenLoaded('sectors')),

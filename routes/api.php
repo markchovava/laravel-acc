@@ -6,6 +6,7 @@ use App\Http\Controllers\CountryOpportunityController;
 use App\Http\Controllers\EventCartController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventOrderController;
+use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\MemberOrderController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\NewsController;
@@ -87,6 +88,18 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     });
     Route::get('/event-order-by-user', [EventOrderController::class, 'indexByUser']);
     Route::post('/event-order-status', [EventOrderController::class, 'statusUpdate']);
+
+    /* INVESTMENT */
+    Route::prefix('investment')->group(function() {
+        Route::get('/', [InvestmentController::class, 'index']);
+        Route::post('/', [InvestmentController::class, 'store']);
+        Route::get('/{id}', [InvestmentController::class, 'view']);
+        Route::post('/{id}', [InvestmentController::class, 'update']);
+        Route::delete('/{id}', [InvestmentController::class, 'delete']);
+    });
+    Route::get('/investment-index-by-user', [InvestmentController::class, 'indexByUser']);
+    Route::get('/investment-opportunity-view', [InvestmentController::class, 'investmentOpportunityView']);
+    Route::post('/investment-status', [InvestmentController::class, 'statusUpdate']);
 
     /* MEMBERSHIP */
     Route::prefix('membership')->group(function() {

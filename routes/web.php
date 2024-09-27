@@ -6,6 +6,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountryOpportunityController;
 use App\Http\Controllers\EventCartController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OpportunityController;
@@ -60,6 +61,8 @@ Route::prefix('event-cart')->group(function() {
     Route::delete('/{id}', [EventCartController::class, 'delete']);
 });
 Route::get('/event-cart-by-token', [EventCartController::class, 'viewByToken']);
+
+Route::get('/investment-opportunity-view', [InvestmentController::class, 'investmentOpportunityView']);
 
 /* MEMBERSHIP */
 Route::prefix('membership')->group(function() {
