@@ -4,15 +4,112 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
 use App\Models\EventCart;
+use App\Models\Membership;
+use App\Models\QrCode;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
 
     public $upload_location = 'assets/img/user/';
+
+    public function check(){
+        if(Auth::check()) {
+            $user_id = Auth::user()->id;
+            return response()->json([
+                'status' => 1,
+                'user_id' => $user_id,
+            ]);
+        }
+        return response()->json([
+            'status' => 0,
+        ]);
+    }
+
+    public function qrcodeLogin(Request $request) {
+        $qrcode = QrCode::where('code', $request->code)->first();
+        if(!isset($qrcode)){
+            return response()->json([
+                'status' => 0,
+                'message' => 'QR Code is not found.'
+            ]);
+        }
+        if($qrcode->status != 'Used'){
+            return response()->json([
+                'status' => 2,
+                'message' => 'QR Code is not assigned to a user.'
+            ]);
+        }
+        if(isset($qrcode)){
+            $data = User::find($qrcode->user_id);
+            $membership_id = null;
+            if(isset($data->membership_id)) {
+                $membership_id = $data->membership_id;
+            }
+            /*  */
+            return response()->json([
+                'status' => 1,
+                'message' => 'Login Successful.',
+                'auth_token' => $data->createToken($data->email)->plainTextToken,
+                'role_level' => $data->role_level,
+                'membership_id' => $membership_id,
+            ]);
+        }
+    }
+
+    public function qrcodeRegister(Request $request) {
+        //Check QR Code
+        $qrcode = QrCode::where('code', $request->code)->first();
+        if(!isset($qrcode)) {
+            return response()->json([
+                'status' => 0,
+                'message' => 'QR Code does not exist, please try a different one.',
+            ]);
+        }
+        /* CHECK STATUS */
+        if($qrcode->status != 'Available') {
+            return response()->json([
+                'status' => 2,
+                'message' => 'QR Code is already used, please try a another one.',
+            ]);
+        }
+        //Check Email
+        $email = User::where('email', $request->email)->first();
+        if(isset($email)){
+            return response()->json([
+                'message' => 'Email is aleady taken, please try another one.',
+                'status' => 3,
+            ]);
+        }
+        /* USER */
+        $data = new User();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->role_level = 4;
+        $data->password = Hash::make($request->password);
+        $data->code = $request->password;
+        $data->created_at = now();
+        $data->updated_at = now();
+        $data->save();
+        /* QR CODE UPDATE STATUS */
+        $qrcode->status = 'Used';
+        $qrcode->user_id = $data->id;
+        $qrcode->updated_at = now();
+        $qrcode->save();
+        /* RETURN */
+        return response()->json([
+            'status' => 1,
+            'message' => 'Created Successfully.',
+            'data' => new UserResource($data),
+            'auth_token' => $data->createToken($data->email)->plainTextToken,
+            'role_level' => $data->role_level,
+        ]);
+
+    }
     
     public function register(Request $request){
         $email = User::where('email', $request->email)->first();
@@ -37,7 +134,7 @@ class AuthController extends Controller
         /* Dealing with Membership. */
         $membership = null;
         if($user->membership()->exists()){
-            $membership = $user->membership->level;
+            $membership = $user->membership->id;
         }
         return response()->json([
             'status' => 1,
@@ -66,9 +163,9 @@ class AuthController extends Controller
             ]);
         }
         /* Dealing with Membership. */
-        $membership = null;
-        if($user->membership()->exists()){
-            $membership = $user->membership->level;
+        $membership_id = null;
+        if(isset($user->membership_id)){
+            $membership_id = $user->membership_id;
         }
         /*  */
         return response()->json([
@@ -76,7 +173,7 @@ class AuthController extends Controller
             'message' => 'Login Successful.',
             'auth_token' => $user->createToken($user->email)->plainTextToken,
             'role_level' => $user->role_level,
-            'membership' => $membership,
+            'membership' => $membership_id,
         ]);
     }
 
@@ -160,7 +257,6 @@ class AuthController extends Controller
         ]);
     }
 
-
     public function logout(Request $request){
         if(!empty($request->cart_token)) {
             $event_cart = EventCart::where('cart_token', $request->cart_token)->get();
@@ -175,4 +271,5 @@ class AuthController extends Controller
             'message' => 'Logged out succesfully.',
         ]);
     }
+    
 }

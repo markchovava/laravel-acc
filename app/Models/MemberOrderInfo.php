@@ -18,6 +18,8 @@ class MemberOrderInfo extends Model
         'phone',
         'country',
         'address',
+        'website',
+        'who_join',
         'email',
         'profession',
         'company_name',

@@ -21,6 +21,8 @@ class MemberOrderInfoResource extends JsonResource
             'membership_id' => $this->membership_id,
             'name' => $this->name,
             'phone' => $this->phone,
+            'website' => $this->website,
+            'who_join' => $this->who_join,
             'country' => $this->country,
             'address' => $this->address,
             'email' => $this->email,

@@ -36,6 +36,7 @@ class UserResource extends JsonResource
             'updated_at' => $this->updated_at,
             'role' => new RoleResource($this->whenLoaded('role')),
             'membership' => new MembershipResource($this->whenLoaded('membership')),
+            'qrcode' => new QrCodeResource($this->whenLoaded('qrcode')),
             
         ];
     }

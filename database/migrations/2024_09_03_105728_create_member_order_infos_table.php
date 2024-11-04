@@ -19,6 +19,8 @@ return new class extends Migration
             $table->bigInteger('member_order_id')->nullable();
             $table->bigInteger('membership_id')->nullable();
             $table->string('name')->nullable();
+            $table->string('who_join')->nullable();
+            $table->string('website')->nullable();
             $table->string('phone')->nullable();
             $table->string('country')->nullable();
             $table->longText('address')->nullable();

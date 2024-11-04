@@ -18,6 +18,11 @@ class UserController extends Controller
         $shuffled = str_shuffle($characters);
         return substr($shuffled, 0, $length);
     }
+
+    public function searchEmail(Request $request) {
+        $data = User::where('email', 'LIKE', '%' . $request->search . '%')->paginate(12);
+        return UserResource::collection($data);
+    }
     
     public function index(Request $request){
         $user_id = Auth::user()->id;

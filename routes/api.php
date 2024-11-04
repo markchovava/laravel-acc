@@ -14,6 +14,7 @@ use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OpportunityImageController;
 use App\Http\Controllers\OpportunitySectorController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\TestimonialController;
@@ -40,12 +41,13 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
     Route::get('/logout', [AuthController::class, 'logout']);
 
-    /* USER */
+    /* AUTH */
     Route::prefix('profile')->group(function() {
         Route::get('/', [AuthController::class, 'view']);
         Route::post('/', [AuthController::class, 'update']);
     });
     Route::post('/password', [AuthController::class, 'password']);
+    Route::post('/profile-check', [AuthController::class, 'check']);
  
     /* COUNTRY */
     Route::prefix('country')->group(function() {
@@ -101,6 +103,18 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/investment-opportunity-view', [InvestmentController::class, 'investmentOpportunityView']);
     Route::post('/investment-status', [InvestmentController::class, 'statusUpdate']);
 
+    /* QR CODE */
+    Route::prefix('qrcode')->group(function() {
+        Route::get('/', [QrCodeController::class, 'index']);
+        Route::post('/', [QrCodeController::class, 'store']);
+        Route::get('/{id}', [QrCodeController::class, 'view']);
+        Route::delete('/{id}', [QrCodeController::class, 'delete']);
+    });
+    Route::get('/qrcode-search', [QrCodeController::class, 'search']);
+    Route::get('/qrcode-index-by-status', [QrCodeController::class, 'indexByStatus']);
+    Route::post('/qrcode-store-by-num', [QrCodeController::class, 'storeByNum']);
+    Route::post('/qrcode-assign-user', [QrCodeController::class, 'assignUser']);
+
     /* MEMBERSHIP */
     Route::prefix('membership')->group(function() {
         Route::get('/', [MembershipController::class, 'index']);
@@ -123,6 +137,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::post('/member-order-status/{id}', [MemberOrderController::class, 'statusUpdate']);
     Route::get('/member-order-by-user', [MemberOrderController::class, 'indexByUser']);
     Route::post('/member-order-checkout', [MemberOrderController::class, 'checkout']);
+    Route::post('/member-order-qrcode', [MemberOrderController::class, 'storeQrCode']);
 
     /* NEWS */
     Route::prefix('news')->group(function() {
@@ -159,6 +174,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::post('/{id}', [UserController::class, 'update']);
         Route::delete('/{id}', [UserController::class, 'delete']);
     });
+    Route::get('/user-email-search', [UserController::class, 'searchEmail']);
     
     /* OPPORTUNITY */
     Route::prefix('opportunity')->group(function() {

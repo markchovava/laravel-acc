@@ -18,6 +18,8 @@ return new class extends Migration
             $table->bigInteger('role_level')->nullable();
             $table->string('name')->nullable();
             $table->longText('gender')->nullable();
+            $table->string('who_join')->nullable();
+            $table->string('website')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->longText('address')->nullable();

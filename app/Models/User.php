@@ -36,6 +36,10 @@ class User extends Authenticatable
     ];
 
 
+    public function qrcode(){
+        return $this->hasOne(QrCode::class, 'user_id', 'id');
+    }
+
     public function opportunities(){
         return $this->belongsToMany(Opportunity::class, 'opportunity_sectors', 'sector_id', 'opportunity_id')
             ->withTimestamps();

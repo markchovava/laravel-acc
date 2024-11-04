@@ -11,6 +11,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\OpportunitySectorController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\TestimonialController;
@@ -34,6 +35,8 @@ Route::get('/', function () {
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register-qrcode', [AuthController::class, 'qrcodeRegister']);
+Route::post('/login-qrcode', [AuthController::class, 'qrcodeLogin']);
 
 /* COUNTRY */
 Route::prefix('country')->group(function() {
@@ -63,6 +66,12 @@ Route::prefix('event-cart')->group(function() {
 Route::get('/event-cart-by-token', [EventCartController::class, 'viewByToken']);
 
 Route::get('/investment-opportunity-view', [InvestmentController::class, 'investmentOpportunityView']);
+
+/* QR CODE */
+Route::get('/qrcode', [QrCodeController::class, 'index']);
+Route::get('/qrcode/{id}', [QrCodeController::class, 'view']);
+Route::get('/qrcode-search', [QrCodeController::class, 'search']);
+Route::get('/qrcode-index-by-status', [QrCodeController::class, 'indexByStatus']);
 
 /* MEMBERSHIP */
 Route::prefix('membership')->group(function() {

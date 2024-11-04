@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2024 at 04:27 PM
+-- Generation Time: Nov 04, 2024 at 03:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel_africacc`
+-- Database: `laravel_acc_up`
 --
 
 -- --------------------------------------------------------
@@ -45,69 +45,61 @@ CREATE TABLE `countries` (
 --
 
 INSERT INTO `countries` (`id`, `user_id`, `name`, `slug`, `priority`, `description`, `portrait`, `landscape`, `created_at`, `updated_at`) VALUES
-(6, 2, 'Zimbabwe', 'zimbabwe', 7, 'Zimbabwe', 'assets/img/country/sector_p202448406.jpg', 'assets/img/country/sector_l202448202448236.jpg', '2024-08-26 13:48:38', '2024-08-26 13:48:38'),
-(7, 2, 'Angola', 'Angola', 2, 'Angola', 'assets/img/country/sector_p202454757.jpg', 'assets/img/country/sector_l202454202454655.jpg', '2024-08-26 13:54:29', '2024-08-26 13:54:29'),
-(8, 2, 'Gabon', 'gabon', 1, 'Gabon', 'assets/img/country/sector_p202424691.jpg', 'assets/img/country/sector_l202424202424538.jpg', '2024-08-28 11:24:22', '2024-08-28 11:24:22'),
-(9, 2, 'Central African Republic', 'central-african-republic', 2, 'Central African Republic', 'assets/img/country/sector_p202425492.jpg', 'assets/img/country/sector_l202425202425568.jpg', '2024-08-28 11:25:18', '2024-08-28 11:25:18'),
-(10, 2, 'Chad', 'chad', 3, 'Chad', 'assets/img/country/sector_p202425446.jpg', 'assets/img/country/sector_l202425202425697.jpg', '2024-08-28 11:25:51', '2024-08-28 11:25:51'),
-(11, 2, 'Guinea-Bisau', 'guinea-bissau', 5, 'Guinea-Bisau', 'assets/img/country/sector_p202426425.jpg', 'assets/img/country/sector_l202426202426855.jpg', '2024-08-28 11:26:45', '2024-08-28 11:26:45'),
-(12, 2, 'Democratic Republic of Congo', 'drc', 5, 'Democratic Republic of Congo', 'assets/img/country/sector_p202427580.jpg', 'assets/img/country/sector_l202427202427245.jpg', '2024-08-28 11:27:42', '2024-08-28 11:27:42'),
-(13, 2, 'Equatorial Guinea', 'equatorial-guinea', 1, 'Equatorial Guinea', 'assets/img/country/sector_p202428349.jpg', 'assets/img/country/sector_l202428202428318.jpg', '2024-08-28 11:28:34', '2024-08-28 11:28:34'),
-(14, 2, 'Sierra Leone', 'sierra-leone', 1, '<p>Sierra Leone</p>', 'assets/img/country/sector_p202430819.jpg', 'assets/img/country/sector_l202430202430923.jpg', '2024-09-17 08:53:14', '2024-09-17 08:53:14'),
-(15, 2, 'Burkina Faso', 'burkina-faso', 4, NULL, 'assets/img/country/sector_p202450550.jpg', 'assets/img/country/sector_l202450202450419.jpg', '2024-09-17 07:50:48', '2024-09-17 07:50:48'),
-(16, 2, 'Burundi', 'burundi', 3, '<p>Burundi</p>', 'assets/img/country/sector_p202453268.jpg', 'assets/img/country/sector_l202453202453414.jpg', '2024-09-17 07:53:38', '2024-09-17 07:53:38'),
-(17, 2, 'Benin', 'benin', 3, NULL, 'assets/img/country/sector_p20245649.jpg', 'assets/img/country/sector_l202456893.jpg', '2024-09-17 07:56:35', '2024-09-17 07:56:35'),
-(18, 2, 'Botswana', 'botswana', NULL, NULL, 'assets/img/country/sector_p202457621.jpg', 'assets/img/country/sector_l202457202457240.jpg', '2024-09-17 07:57:25', '2024-09-17 07:57:25'),
-(19, 2, 'Republic of Congo', 'republic-of-congo', 8, NULL, 'assets/img/country/sector_p202459363.jpg', 'assets/img/country/sector_l202459202459834.jpg', '2024-09-17 07:59:33', '2024-09-17 07:59:33'),
-(20, 2, 'Côte d\'Ivoire', 'cote-d-Ivoire', 6, NULL, 'assets/img/country/sector_p202400666.jpg', 'assets/img/country/sector_l20240020240034.jpg', '2024-09-17 08:00:32', '2024-09-17 08:00:32'),
-(21, 2, 'Cameroon', 'cameroon', 11, NULL, 'assets/img/country/sector_p202401666.jpg', 'assets/img/country/sector_l202401202401467.jpg', '2024-09-17 08:01:46', '2024-09-17 08:01:46'),
-(22, 2, 'Cape Verde', 'cape-verde', 5, NULL, 'assets/img/country/sector_p202404799.jpg', 'assets/img/country/sector_l202404202404923.jpg', '2024-09-17 08:04:30', '2024-09-17 08:04:30'),
-(23, 2, 'Djibouti', 'djibouti', 8, NULL, 'assets/img/country/sector_p20240540.jpg', 'assets/img/country/sector_l202405202405986.jpg', '2024-09-17 08:05:34', '2024-09-17 08:05:34'),
-(24, 2, 'Algeria', 'algeria', 2, NULL, 'assets/img/country/sector_p202406303.jpg', 'assets/img/country/sector_l202406202406513.jpg', '2024-09-17 08:06:21', '2024-09-17 08:06:21'),
-(25, 2, 'Egypt', 'egypt', 8, NULL, 'assets/img/country/sector_p202408735.jpg', 'assets/img/country/sector_l202408202408194.jpg', '2024-09-17 08:08:09', '2024-09-17 08:08:09'),
-(26, 2, 'Western Sahara', 'Western-sahara', 2, NULL, 'assets/img/country/sector_p202410720.jpg', 'assets/img/country/sector_l202410202410693.jpg', '2024-09-17 08:10:25', '2024-09-17 08:10:25'),
-(27, 2, 'Eritrea', 'eritrea', 4, NULL, 'assets/img/country/sector_p202411696.jpg', 'assets/img/country/sector_l20241120241168.jpg', '2024-09-17 08:11:40', '2024-09-17 08:11:40'),
-(28, 2, 'Ethiopia', 'ethiopia', 9, NULL, 'assets/img/country/sector_p202412530.jpg', 'assets/img/country/sector_l20241220241248.jpg', '2024-09-17 08:12:36', '2024-09-17 08:12:36'),
-(29, 2, 'Ghana', 'ghana', 6, '<p>Ghana</p>', 'assets/img/country/sector_p202413448.jpg', 'assets/img/country/sector_l202413202413823.jpg', '2024-09-17 08:13:34', '2024-09-17 08:13:34'),
-(30, 2, 'Gibraltar', 'gibraltar', 5, '<p>Gibraltar</p>', 'assets/img/country/sector_p202415539.jpg', 'assets/img/country/sector_l202415202415286.jpg', '2024-09-17 08:15:00', '2024-09-17 08:15:00'),
-(31, 2, 'Gambia', 'gambia', 10, NULL, 'assets/img/country/sector_p202418214.jpg', 'assets/img/country/sector_l202418202418514.jpg', '2024-09-17 08:18:07', '2024-09-17 08:18:07'),
-(32, 2, 'Guinea', 'guinea', 2, '<p>Guinea</p>', 'assets/img/country/sector_p202419303.jpg', 'assets/img/country/sector_l202419202419808.jpg', '2024-09-17 08:19:34', '2024-09-17 08:19:34'),
-(33, 2, 'Guinea-Bissau', 'guinea-bissau', 6, '<p>Guinea-Bissau</p>', 'assets/img/country/sector_p202420589.jpg', 'assets/img/country/sector_l202420202420966.jpg', '2024-09-17 08:20:51', '2024-09-17 08:20:51'),
-(34, 2, 'Glorioso Islands', 'glorioso-islands', 3, '<p>Glorioso Islands&nbsp;</p>', 'assets/img/country/sector_p202422526.jpg', 'assets/img/country/sector_l202422202422576.jpg', '2024-09-17 08:22:17', '2024-09-17 08:22:17'),
-(35, 2, 'Juan De Nova Island', 'juan-de-nova Island', 4, '<p>Juan De Nova Island</p>', 'assets/img/country/sector_p202426504.jpg', 'assets/img/country/sector_l202426202426979.jpg', '2024-09-17 08:26:14', '2024-09-17 08:26:14'),
-(36, 2, 'Kenya', 'kenya', 2, '<p>Kenya</p>', 'assets/img/country/sector_p202427687.jpg', 'assets/img/country/sector_l202427202427878.jpg', '2024-09-17 08:27:57', '2024-09-17 08:27:57'),
-(37, 2, 'Kiribati', 'kiribati', 5, '<p>Kiribati</p>', 'assets/img/country/sector_p202428148.jpg', 'assets/img/country/sector_l202428202428677.jpg', '2024-09-17 08:28:52', '2024-09-17 08:28:52'),
-(38, 2, 'Comoros', 'comoros', 9, '<p>Comoros</p>', 'assets/img/country/sector_p202429597.jpg', 'assets/img/country/sector_l202429202429806.jpg', '2024-09-17 08:29:46', '2024-09-17 08:29:46'),
-(39, 2, 'Liberia', 'liberia', 6, '<p>Liberia</p>', 'assets/img/country/sector_p202430556.jpg', 'assets/img/country/sector_l202430202430825.jpg', '2024-09-17 08:30:40', '2024-09-17 08:30:40'),
-(40, 2, 'Lesotho', 'lesotho', 8, '<p>Lesotho</p>', 'assets/img/country/sector_p202431913.jpg', 'assets/img/country/sector_l202431202431162.jpg', '2024-09-17 08:31:23', '2024-09-17 08:31:23'),
-(41, 2, 'Libya', 'libya', 6, '<p>Libya</p>', 'assets/img/country/sector_p202432154.jpg', 'assets/img/country/sector_l202432202432122.jpg', '2024-09-17 08:32:30', '2024-09-17 08:32:30'),
-(42, 2, 'Morocco', 'morocco', 9, '<p>Morocco</p>', 'assets/img/country/sector_p202436203.jpg', 'assets/img/country/sector_l202436202436459.jpg', '2024-09-17 08:36:42', '2024-09-17 08:36:42'),
-(43, 2, 'Madagascar', 'madagascar', 10, '<p>Madagascar</p>', 'assets/img/country/sector_p202437776.jpg', 'assets/img/country/sector_l202437202437595.jpg', '2024-09-17 08:37:31', '2024-09-17 08:37:31'),
-(44, 2, 'Mali', 'mali', 1, '<p>Mali</p>', 'assets/img/country/sector_p202438728.jpg', 'assets/img/country/sector_l202438202438776.jpg', '2024-09-17 08:38:45', '2024-09-17 08:38:45'),
-(45, 2, 'Mauritania', 'mauritania', 2, '<p>Mauritania</p>', 'assets/img/country/sector_p202439896.jpg', 'assets/img/country/sector_l20243920243958.jpg', '2024-09-17 08:39:53', '2024-09-17 08:39:53'),
-(46, 2, 'Mauritius', 'mauritius', 3, '<p>Mauritius</p>', 'assets/img/country/sector_p202441967.jpg', 'assets/img/country/sector_l202441202441976.jpg', '2024-09-17 08:41:49', '2024-09-17 08:41:49'),
-(47, 2, 'Malawi', 'malawi', 1, '<p>Malawi</p>', 'assets/img/country/sector_p202442984.jpg', 'assets/img/country/sector_l202442202442843.jpg', '2024-09-17 08:42:40', '2024-09-17 08:42:40'),
-(48, 2, 'Mozambique', 'mozambique', 9, '<p>Mozambique</p>', 'assets/img/country/sector_p202443353.jpg', 'assets/img/country/sector_l202443202443546.jpg', '2024-09-17 08:43:28', '2024-09-17 08:43:28'),
-(49, 2, 'Namibia', 'namibia', 5, '<p>Namibia</p>', 'assets/img/country/sector_p202444257.jpg', 'assets/img/country/sector_l202444202444855.jpg', '2024-09-17 08:44:15', '2024-09-17 08:44:15'),
-(50, 2, 'Niger', 'niger', 1, '<p>Niger</p>', 'assets/img/country/sector_p202445971.jpg', 'assets/img/country/sector_l202445202445866.jpg', '2024-09-17 08:45:55', '2024-09-17 08:45:55'),
-(51, 2, 'Nigeria', 'nigeria', 2, '<p>Nigeria</p>', 'assets/img/country/sector_p202446988.jpg', 'assets/img/country/sector_l202446202446393.jpg', '2024-09-17 08:46:57', '2024-09-17 08:46:57'),
-(52, 2, 'Reunion', 'reunion', 2, '<p>Reunion</p>', 'assets/img/country/sector_p202449176.jpg', 'assets/img/country/sector_l202449202449564.jpg', '2024-09-17 08:49:06', '2024-09-17 08:49:06'),
-(53, 2, 'Rwanda', 'rwanda', 2, '<p>Rwanda</p>', 'assets/img/country/sector_p20244992.jpg', 'assets/img/country/sector_l202449202449794.jpg', '2024-09-17 08:49:55', '2024-09-17 08:49:55'),
-(54, 2, 'Seychelles', 'seychelles', 2, '<p>Seychelles&nbsp;</p>', 'assets/img/country/sector_p202450262.jpg', 'assets/img/country/sector_l202450202450451.jpg', '2024-09-17 08:55:31', '2024-09-17 08:55:31'),
-(55, 2, 'Sudan', 'sudan', 9, '<p>Sudan</p>', 'assets/img/country/sector_p202451867.jpg', 'assets/img/country/sector_l202451202451797.jpg', '2024-09-17 08:51:38', '2024-09-17 08:51:38'),
-(56, 2, 'Saint Helena', 'saint-helena', 1, '<p>Saint Helena</p>', 'assets/img/country/sector_p202452932.jpg', 'assets/img/country/sector_l202452202452276.jpg', '2024-09-17 08:52:25', '2024-09-17 08:52:25'),
-(57, 2, 'Senegal', 'senegal', 1, '<p>Senegal</p>', 'assets/img/country/sector_p202454144.jpg', 'assets/img/country/sector_l20245420245493.jpg', '2024-09-17 08:54:13', '2024-09-17 08:54:13'),
-(58, 2, 'Somalia', 'somalia', 2, '<p>Somalia</p>', 'assets/img/country/sector_p202455885.jpg', 'assets/img/country/sector_l202455202455106.jpg', '2024-09-17 08:55:16', '2024-09-17 08:55:16'),
-(59, 2, 'South Sudan', 'south-sudan', 3, '<p>South Sudan</p>', 'assets/img/country/sector_p202456340.jpg', 'assets/img/country/sector_l202456202456809.jpg', '2024-09-17 08:56:12', '2024-09-17 08:56:12'),
-(60, 2, 'Sao Tome and Principe', 'sao-tome-and-principe', 3, '<p>Sao Tome and Principe&nbsp;</p>', 'assets/img/country/sector_p202457548.jpg', 'assets/img/country/sector_l202457202457541.jpg', '2024-09-17 08:57:26', '2024-09-17 08:57:26'),
-(61, 2, 'Swaziland', 'swaziland', 2, '<p>Swaziland</p>', 'assets/img/country/sector_p202458782.jpg', 'assets/img/country/sector_l202458202458634.jpg', '2024-09-17 08:58:53', '2024-09-17 08:58:53'),
-(62, 2, 'Togo', 'togo', 3, '<p>Togo</p>', 'assets/img/country/sector_p202400617.jpg', 'assets/img/country/sector_l202400202400602.jpg', '2024-09-17 09:00:05', '2024-09-17 09:00:05'),
-(63, 2, 'Tunisia', 'tunisia', 2, '<p>Tunisia</p>', 'assets/img/country/sector_p202400350.jpg', 'assets/img/country/sector_l202400202400248.jpg', '2024-09-17 09:00:55', '2024-09-17 09:00:55'),
-(64, 2, 'Tanzania', 'tanzania', 3, '<p>Tanzania</p>', 'assets/img/country/sector_p202401140.jpg', 'assets/img/country/sector_l202401202401591.jpg', '2024-09-17 09:01:51', '2024-09-17 09:01:51'),
-(65, 2, 'Uganda', 'uganda', 1, '<p>Uganda</p>', 'assets/img/country/sector_p20240332.jpg', 'assets/img/country/sector_l2024032024032.jpg', '2024-09-17 09:03:39', '2024-09-17 09:03:39'),
-(66, 2, 'Mayotte', 'mayotte', 6, '<p>Mayotte</p>', 'assets/img/country/sector_p202405832.jpg', 'assets/img/country/sector_l202405202405372.jpg', '2024-09-17 09:05:01', '2024-09-17 09:05:01'),
-(67, 2, 'South Africa', 'south-africa', 1, '<p>South Africa&nbsp;</p>', 'assets/img/country/sector_p202405688.jpg', 'assets/img/country/sector_l202405202405786.jpg', '2024-09-17 09:05:56', '2024-09-17 09:05:56'),
-(68, 2, 'Zambia', 'zambia', 1, '<p>Zambia</p>', 'assets/img/country/sector_p202407291.jpg', 'assets/img/country/sector_l20240720240725.jpg', '2024-09-17 09:07:55', '2024-09-17 09:07:55');
+(6, 2, 'Zimbabwe', 'zimbabwe', 7, '<p>Zimbabwe</p>', 'assets/img/country/sector_p202409208.jpg', 'assets/img/country/sector_l202448202448236.jpg', '2024-10-26 15:09:43', '2024-10-26 15:09:43'),
+(7, 2, 'Angola', 'Angola', 2, '<p>Angola</p>', 'assets/img/country/sector_p202447220.jpg', 'assets/img/country/sector_l202410550.jpg', '2024-10-26 15:10:55', '2024-10-26 15:10:55'),
+(8, 2, 'Gabon', 'gabon', 1, '<p>Gabon</p>', 'assets/img/country/sector_p20243238.jpg', 'assets/img/country/sector_l202424202424538.jpg', '2024-10-26 11:32:15', '2024-10-26 11:32:15'),
+(9, 2, 'Central African Republic', 'central-african-republic', 2, '<p>Central African Republic</p>', 'assets/img/country/sector_p202403387.jpg', 'assets/img/country/sector_l202425202425568.jpg', '2024-10-26 11:03:03', '2024-10-26 11:03:03'),
+(10, 2, 'Chad', 'chad', 3, '<p>Chad</p>', 'assets/img/country/sector_p202406749.jpg', 'assets/img/country/sector_l202425202425697.jpg', '2024-10-26 11:06:34', '2024-10-26 11:06:34'),
+(11, 2, 'Guinea-Bissau', 'guinea-bissau', 5, '<p>Guinea-Bisau</p>', 'assets/img/country/sector_p202453481.jpg', 'assets/img/country/sector_l202426202426855.jpg', '2024-10-26 13:53:51', '2024-10-26 13:53:51'),
+(12, 2, 'Democratic Republic of Congo', 'drc', 5, '<p>Democratic Republic of Congo</p>', 'assets/img/country/sector_p202416424.jpg', 'assets/img/country/sector_l202427202427245.jpg', '2024-10-26 11:16:23', '2024-10-26 11:16:23'),
+(13, 2, 'Equatorial Guinea', 'equatorial-guinea', 1, '<p>Equatorial Guinea</p>', 'assets/img/country/sector_p202422406.jpg', 'assets/img/country/sector_l202428202428318.jpg', '2024-10-26 11:22:47', '2024-10-26 11:22:47'),
+(14, 2, 'Sierra Leone', 'sierra-leone', 1, '<p>Sierra Leone</p>', 'assets/img/country/sector_p202443435.jpg', 'assets/img/country/sector_l202430202430923.jpg', '2024-10-26 14:43:37', '2024-10-26 14:43:37'),
+(15, 2, 'Burkina Faso', 'burkina-faso', 4, '<p>Burkina Faso</p>', 'assets/img/country/sector_p20245463.jpg', 'assets/img/country/sector_l202450202450419.jpg', '2024-10-26 10:54:30', '2024-10-26 10:54:30'),
+(16, 2, 'Burundi', 'burundi', 3, '<p>Burundi</p>', 'assets/img/country/sector_p202457917.jpg', 'assets/img/country/sector_l202453202453414.jpg', '2024-10-26 10:57:02', '2024-10-26 10:57:02'),
+(17, 2, 'Benin', 'benin', 3, NULL, 'assets/img/country/sector_p202448508.jpg', 'assets/img/country/sector_l202456893.jpg', '2024-10-26 10:48:58', '2024-10-26 10:48:58'),
+(18, 2, 'Botswana', 'botswana', 4, '<p>Botswana</p>', 'assets/img/country/sector_p202450671.jpg', 'assets/img/country/sector_l202457202457240.jpg', '2024-10-26 10:53:47', '2024-10-26 10:53:47'),
+(19, 2, 'Republic of Congo', 'republic-of-congo', 8, NULL, 'assets/img/country/sector_p202438162.jpg', 'assets/img/country/sector_l202459202459834.jpg', '2024-10-26 14:38:55', '2024-10-26 14:38:55'),
+(20, 2, 'Côte d\'Ivoire', 'cote-d-ivoire', 6, '<p>Côte d\'Ivoire</p>', 'assets/img/country/sector_p202413896.jpg', 'assets/img/country/sector_l20240020240034.jpg', '2024-10-26 11:13:45', '2024-10-26 11:13:45'),
+(21, 2, 'Cameroon', 'cameroon', 11, NULL, 'assets/img/country/sector_p202459753.jpg', 'assets/img/country/sector_l202401202401467.jpg', '2024-10-26 10:59:06', '2024-10-26 10:59:06'),
+(22, 2, 'Cape Verde', 'cape-verde', 5, NULL, 'assets/img/country/sector_p202402963.jpg', 'assets/img/country/sector_l202404202404923.jpg', '2024-10-26 11:02:10', '2024-10-26 11:02:10'),
+(23, 2, 'Djibouti', 'djibouti', 8, NULL, 'assets/img/country/sector_p202418258.jpg', 'assets/img/country/sector_l202405202405986.jpg', '2024-10-26 11:18:32', '2024-10-26 11:18:32'),
+(24, 2, 'Algeria', 'algeria', 2, NULL, 'assets/img/country/sector_p202445763.jpg', 'assets/img/country/sector_l202406202406513.jpg', '2024-10-26 10:45:50', '2024-10-26 10:45:50'),
+(25, 2, 'Egypt', 'egypt', 8, NULL, 'assets/img/country/sector_p202420766.jpg', 'assets/img/country/sector_l202408202408194.jpg', '2024-10-26 11:20:31', '2024-10-26 11:20:31'),
+(27, 2, 'Eritrea', 'eritrea', 4, '<p>Eritrea</p>', 'assets/img/country/sector_p202430714.jpg', 'assets/img/country/sector_l20241120241168.jpg', '2024-10-26 11:30:25', '2024-10-26 11:30:25'),
+(28, 2, 'Ethiopia', 'ethiopia', 9, NULL, 'assets/img/country/sector_p202431559.jpg', 'assets/img/country/sector_l20241220241248.jpg', '2024-10-26 11:31:11', '2024-10-26 11:31:11'),
+(29, 2, 'Ghana', 'ghana', 6, '<p>Ghana</p>', 'assets/img/country/sector_p202441112.jpg', 'assets/img/country/sector_l202413202413823.jpg', '2024-10-26 11:41:19', '2024-10-26 11:41:19'),
+(31, 2, 'Gambia', 'gambia', 10, NULL, 'assets/img/country/sector_p202432330.jpg', 'assets/img/country/sector_l202418202418514.jpg', '2024-10-26 11:32:56', '2024-10-26 11:32:56'),
+(32, 2, 'Guinea', 'guinea', 2, '<p>Guinea</p>', 'assets/img/country/sector_p202451534.jpg', 'assets/img/country/sector_l202419202419808.jpg', '2024-10-26 13:51:49', '2024-10-26 13:51:49'),
+(36, 2, 'Kenya', 'kenya', 2, '<p>Kenya</p>', 'assets/img/country/sector_p202455921.jpg', 'assets/img/country/sector_l202427202427878.jpg', '2024-10-26 13:55:37', '2024-10-26 13:55:37'),
+(37, 2, 'Kiribati', 'kiribati', 5, '<p>Kiribati</p>', 'assets/img/country/sector_p202407495.jpg', 'assets/img/country/sector_l202428202428677.jpg', '2024-10-26 14:07:03', '2024-10-26 14:07:03'),
+(38, 2, 'Comoros', 'comoros', 9, '<p>Comoros</p>', 'assets/img/country/sector_p202413337.jpg', 'assets/img/country/sector_l202429202429806.jpg', '2024-10-26 11:13:05', '2024-10-26 11:13:05'),
+(39, 2, 'Liberia', 'liberia', 6, '<p>Liberia</p>', 'assets/img/country/sector_p202425795.jpg', 'assets/img/country/sector_l202430202430825.jpg', '2024-10-26 14:25:15', '2024-10-26 14:25:15'),
+(40, 2, 'Lesotho', 'lesotho', 8, '<p>Lesotho</p>', 'assets/img/country/sector_p20240897.jpg', 'assets/img/country/sector_l202431202431162.jpg', '2024-10-26 14:08:06', '2024-10-26 14:08:06'),
+(41, 2, 'Libya', 'libya', 6, '<p>Libya</p>', 'assets/img/country/sector_p202426490.jpg', 'assets/img/country/sector_l202432202432122.jpg', '2024-10-26 14:26:19', '2024-10-26 14:26:19'),
+(42, 2, 'Morocco', 'morocco', 9, '<p>Morocco</p>', 'assets/img/country/sector_p202432180.jpg', 'assets/img/country/sector_l202436202436459.jpg', '2024-10-26 14:32:48', '2024-10-26 14:32:48'),
+(43, 2, 'Madagascar', 'madagascar', 10, '<p>Madagascar</p>', 'assets/img/country/sector_p202426765.jpg', 'assets/img/country/sector_l202437202437595.jpg', '2024-10-26 14:26:58', '2024-10-26 14:26:58'),
+(44, 2, 'Mali', 'mali', 1, '<p>Mali</p>', 'assets/img/country/sector_p202428354.jpg', 'assets/img/country/sector_l202438202438776.jpg', '2024-10-26 14:28:34', '2024-10-26 14:28:34'),
+(45, 2, 'Mauritania', 'mauritania', 2, '<p>Mauritania</p>', 'assets/img/country/sector_p202429907.jpg', 'assets/img/country/sector_l20243920243958.jpg', '2024-10-26 14:29:59', '2024-10-26 14:29:59'),
+(46, 2, 'Mauritius', 'mauritius', 3, '<p>Mauritius</p>', 'assets/img/country/sector_p202431258.jpg', 'assets/img/country/sector_l202441202441976.jpg', '2024-10-26 14:31:22', '2024-10-26 14:31:22'),
+(47, 2, 'Malawi', 'malawi', 1, '<p>Malawi</p>', 'assets/img/country/sector_p202427408.jpg', 'assets/img/country/sector_l202442202442843.jpg', '2024-10-26 14:27:36', '2024-10-26 14:27:36'),
+(48, 2, 'Mozambique', 'mozambique', 9, '<p>Mozambique</p>', 'assets/img/country/sector_p202433882.jpg', 'assets/img/country/sector_l202443202443546.jpg', '2024-10-26 14:33:33', '2024-10-26 14:33:33'),
+(49, 2, 'Namibia', 'namibia', 5, '<p>Namibia</p>', 'assets/img/country/sector_p20243679.jpg', 'assets/img/country/sector_l202444202444855.jpg', '2024-10-26 14:36:20', '2024-10-26 14:36:20'),
+(50, 2, 'Niger', 'niger', 1, '<p>Niger</p>', 'assets/img/country/sector_p202437900.jpg', 'assets/img/country/sector_l202445202445866.jpg', '2024-10-26 14:37:23', '2024-10-26 14:37:23'),
+(51, 2, 'Nigeria', 'nigeria', 2, '<p>Nigeria</p>', 'assets/img/country/sector_p202437751.jpg', 'assets/img/country/sector_l202446202446393.jpg', '2024-10-26 14:37:50', '2024-10-26 14:37:50'),
+(53, 2, 'Rwanda', 'rwanda', 2, '<p>Rwanda</p>', 'assets/img/country/sector_p20244064.jpg', 'assets/img/country/sector_l202449202449794.jpg', '2024-10-26 14:40:21', '2024-10-26 14:40:21'),
+(54, 2, 'Seychelles', 'seychelles', 2, '<p>Seychelles&nbsp;</p>', 'assets/img/country/sector_p202442743.jpg', 'assets/img/country/sector_l202450202450451.jpg', '2024-10-26 14:42:22', '2024-10-26 14:42:22'),
+(55, 2, 'Sudan', 'sudan', 9, '<p>Sudan</p>', 'assets/img/country/sector_p202449980.jpg', 'assets/img/country/sector_l202451202451797.jpg', '2024-10-26 14:49:06', '2024-10-26 14:49:06'),
+(57, 2, 'Senegal', 'senegal', 1, '<p>Senegal</p>', 'assets/img/country/sector_p202441767.jpg', 'assets/img/country/sector_l20245420245493.jpg', '2024-10-26 14:41:11', '2024-10-26 14:41:11'),
+(58, 2, 'Somalia', 'somalia', 2, '<p>Somalia</p>', 'assets/img/country/sector_p202444730.jpg', 'assets/img/country/sector_l202455202455106.jpg', '2024-10-26 14:44:15', '2024-10-26 14:44:15'),
+(59, 2, 'South Sudan', 'south-sudan', 3, '<p>South Sudan</p>', 'assets/img/country/sector_p202448787.jpg', 'assets/img/country/sector_l202456202456809.jpg', '2024-10-26 14:48:29', '2024-10-26 14:48:29'),
+(60, 2, 'Sao Tome and Principe', 'sao-tome-and-principe', 3, '<p>Sao Tome and Principe&nbsp;</p>', 'assets/img/country/sector_p202441515.jpg', 'assets/img/country/sector_l202457202457541.jpg', '2024-10-26 14:41:46', '2024-10-26 14:41:46'),
+(61, 2, 'Swaziland', 'swaziland', 2, '<p>Swaziland</p>', 'assets/img/country/sector_p202451786.jpg', 'assets/img/country/sector_l202458202458634.jpg', '2024-10-26 14:51:32', '2024-10-26 14:51:32'),
+(62, 2, 'Togo', 'togo', 3, '<p>Togo</p>', 'assets/img/country/sector_p202405899.jpg', 'assets/img/country/sector_l202400202400602.jpg', '2024-10-26 15:05:06', '2024-10-26 15:05:06'),
+(63, 2, 'Tunisia', 'tunisia', 2, '<p>Tunisia</p>', 'assets/img/country/sector_p202405325.jpg', 'assets/img/country/sector_l202400202400248.jpg', '2024-10-26 15:05:58', '2024-10-26 15:05:58'),
+(64, 2, 'Tanzania', 'tanzania', 3, '<p>Tanzania</p>', 'assets/img/country/sector_p202403537.jpg', 'assets/img/country/sector_l202401202401591.jpg', '2024-10-26 15:03:28', '2024-10-26 15:03:28'),
+(65, 2, 'Uganda', 'uganda', 1, '<p>Uganda</p>', 'assets/img/country/sector_p202402700.jpg', 'assets/img/country/sector_l2024032024032.jpg', '2024-10-26 15:02:44', '2024-10-26 15:02:44'),
+(67, 2, 'South Africa', 'south-africa', 1, '<p>South Africa&nbsp;</p>', 'assets/img/country/sector_p202445510.jpg', 'assets/img/country/sector_l202405202405786.jpg', '2024-10-26 14:45:02', '2024-10-26 14:45:02'),
+(68, 2, 'Zambia', 'zambia', 1, '<p>Zambia</p>', 'assets/img/country/sector_p202409309.jpg', 'assets/img/country/sector_l20240720240725.jpg', '2024-10-26 15:09:06', '2024-10-26 15:09:06');
 
 -- --------------------------------------------------------
 
@@ -435,8 +427,7 @@ CREATE TABLE `investments` (
 
 INSERT INTO `investments` (`id`, `user_id`, `opportunity_id`, `status`, `name`, `email`, `address`, `phone`, `country`, `profession`, `company_name`, `created_at`, `updated_at`) VALUES
 (6, 2, 17, 'Processing', 'Admin', 'admin@email.com', '67', '45', 'Zimbabwe', 'Good', 'first', '2024-09-27 08:53:45', '2024-09-27 08:53:45'),
-(7, 2, 14, 'Processing', 'Admin', 'admin@email.com', '67', '45', 'Zimbabwe', 'Good', 'first', '2024-09-27 09:27:30', '2024-09-27 09:27:30'),
-(8, 2, 15, 'Processing', 'Admin', 'admin@email.com', '67', '45', 'Zimbabwe', 'Good', 'first', '2024-09-27 09:31:00', '2024-09-27 09:31:00');
+(8, 2, 15, 'Successful', 'Admin', 'admin@email.com', '67', '45', 'Zimbabwe', 'Good', 'first', '2024-09-27 09:31:00', '2024-09-27 15:04:25');
 
 -- --------------------------------------------------------
 
@@ -457,7 +448,10 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `user_id`, `membership_id`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, '2024-09-04 07:16:01', '2024-09-24 10:49:54');
+(1, 2, 2, '2024-09-04 07:16:01', '2024-09-24 10:49:54'),
+(2, 6, 2, '2024-09-27 15:10:33', '2024-09-27 15:23:04'),
+(3, 7, 2, '2024-10-10 13:24:34', '2024-10-10 13:24:34'),
+(4, 4, 2, '2024-10-10 13:27:32', '2024-10-11 11:59:51');
 
 -- --------------------------------------------------------
 
@@ -513,7 +507,11 @@ CREATE TABLE `member_orders` (
 INSERT INTO `member_orders` (`id`, `user_id`, `member_id`, `membership_id`, `member_fee`, `paid_amount`, `start_date`, `duration`, `end_date`, `status`, `created_at`, `updated_at`) VALUES
 (7, 2, 1, 2, 10, 60, '2024-09-13', '6', '2025-03-13', 'Active', '2024-09-09 07:36:14', '2024-09-13 16:18:55'),
 (8, 2, 1, 2, 10, 10, NULL, '1', NULL, 'Active', '2024-09-13 15:46:42', '2024-09-13 16:12:49'),
-(9, 2, 1, 2, 10, NULL, NULL, NULL, NULL, 'Processing', '2024-09-24 10:49:54', '2024-09-24 10:49:54');
+(9, 2, 1, 2, 10, NULL, NULL, NULL, NULL, 'Processing', '2024-09-24 10:49:54', '2024-09-24 10:49:54'),
+(11, 6, 2, 2, 10, 40, NULL, '4', NULL, 'Processing', '2024-09-27 15:23:04', '2024-09-27 15:23:18'),
+(12, 7, 3, 2, 10, 30, NULL, '3', NULL, 'Processing', '2024-10-10 13:24:34', '2024-10-10 13:24:45'),
+(13, 4, 4, 2, 10, 0, NULL, '0', NULL, 'Processing', '2024-10-10 13:27:32', '2024-10-10 13:27:40'),
+(14, 4, 4, 2, 10, 20, '2024-10-11', '2', '2024-12-11', 'Active', '2024-10-11 11:59:51', '2024-10-11 12:24:07');
 
 -- --------------------------------------------------------
 
@@ -527,6 +525,7 @@ CREATE TABLE `member_order_infos` (
   `member_order_id` bigint(20) DEFAULT NULL,
   `membership_id` bigint(20) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `who_join` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `country` varchar(255) DEFAULT NULL,
   `address` longtext DEFAULT NULL,
@@ -541,10 +540,14 @@ CREATE TABLE `member_order_infos` (
 -- Dumping data for table `member_order_infos`
 --
 
-INSERT INTO `member_order_infos` (`id`, `user_id`, `member_order_id`, `membership_id`, `name`, `phone`, `country`, `address`, `email`, `profession`, `company_name`, `created_at`, `updated_at`) VALUES
-(7, 2, 7, 2, 'Chovava', '45', 'Zimbabwe', '67', 'cho@email.com', 'Good', 'first', '2024-09-09 07:36:14', '2024-09-09 07:36:14'),
-(8, 2, 8, 2, 'Admin', '45', 'Zimbabwe', '67', 'admin@email.com', 'Good', 'first', '2024-09-13 15:46:42', '2024-09-13 15:46:42'),
-(9, 2, 9, 2, 'Admin', '45', 'Zimbabwe', '67', 'admin@email.com', 'Good', 'first', '2024-09-24 10:49:54', '2024-09-24 10:49:54');
+INSERT INTO `member_order_infos` (`id`, `user_id`, `member_order_id`, `membership_id`, `name`, `who_join`, `phone`, `country`, `address`, `email`, `profession`, `company_name`, `created_at`, `updated_at`) VALUES
+(7, 2, 7, 2, 'Chovava', NULL, '45', 'Zimbabwe', '67', 'cho@email.com', 'Good', 'first', '2024-09-09 07:36:14', '2024-09-09 07:36:14'),
+(8, 2, 8, 2, 'Admin', NULL, '45', 'Zimbabwe', '67', 'admin@email.com', 'Good', 'first', '2024-09-13 15:46:42', '2024-09-13 15:46:42'),
+(9, 2, 9, 2, 'Admin', NULL, '45', 'Zimbabwe', '67', 'admin@email.com', 'Good', 'first', '2024-09-24 10:49:54', '2024-09-24 10:49:54'),
+(11, 6, 11, 2, 'Test', NULL, '123233', 'Angola', '1 First Ave.', 'test@email.com', 'Editor', 'Company 1', '2024-09-27 15:23:04', '2024-09-27 15:23:04'),
+(12, 7, 12, NULL, 'Cho Cho', NULL, '12345', 'Zimbabwe', '33 sd', 'cho@email.com', 'Director', 'Big Com', '2024-10-10 13:24:34', '2024-10-10 13:24:34'),
+(13, 4, 13, NULL, 'Mark', NULL, '121124', 'Antarctica', '4444', 'mark@email.com', 'Director', 'Company 1', '2024-10-10 13:27:32', '2024-10-10 13:27:32'),
+(14, 4, 14, 2, 'Mark', NULL, '12', 'Antarctica', 'as', 'mark@email.com', 'Director', 'Brand', '2024-10-11 11:59:51', '2024-10-11 11:59:51');
 
 -- --------------------------------------------------------
 
@@ -805,7 +808,24 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
-(39, 'App\\Models\\User', 6, 'test@email.com', '85db503fbc147c098885b40542a2728a66cb96365a9bcbaa13a0695aefb3d6e8', '[\"*\"]', '2024-09-27 11:59:49', NULL, '2024-09-27 11:41:12', '2024-09-27 11:59:49');
+(42, 'App\\Models\\User', 6, 'test@email.com', '669787ef683bfc807667d2957badddec904a25a87af477cad1994e3d96fa620d', '[\"*\"]', '2024-09-27 15:24:41', NULL, '2024-09-27 15:08:32', '2024-09-27 15:24:41'),
+(43, 'App\\Models\\User', 2, 'admin@email.com', '425250aa4a8a8d95c877f0d181c20bbf5ff758cca3a3cd0c65d37b45db8ff737', '[\"*\"]', '2024-09-30 08:56:29', NULL, '2024-09-30 08:53:25', '2024-09-30 08:56:29'),
+(51, 'App\\Models\\User', 2, 'admin@email.com', '1dbd7013c0d2ead2bea2a42d70701855d6381543aeafcbe3d3c1f74f69dda44c', '[\"*\"]', '2024-10-29 14:15:58', NULL, '2024-10-26 10:44:42', '2024-10-29 14:15:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `qr_codes`
+--
+
+CREATE TABLE `qr_codes` (
+  `id` bigint(20) NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -899,6 +919,7 @@ CREATE TABLE `users` (
   `role_level` bigint(20) DEFAULT NULL,
   `membership_id` mediumint(9) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `who_join` varchar(255) DEFAULT NULL,
   `gender` longtext DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
@@ -919,11 +940,12 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `role_level`, `membership_id`, `name`, `gender`, `email`, `phone`, `address`, `country`, `company_name`, `profession`, `code`, `password`, `image`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 1, 2, 'Admin', 'Male', 'admin@email.com', '45', '67', 'Zimbabwe', 'first', 'Good', '12345678', '$2y$12$WEG2IL8MRnu8SPN3e1g4QeyCK4TnSqVejHUyzolabZswEvdC7.ul6', 'assets/img/user/user_202421748.jpg', NULL, NULL, '2024-08-23 14:53:08', '2024-09-09 14:21:42'),
-(3, 3, NULL, 'Mark Chovava', 'Male', 'markchovava@gmail.com', '0782210021', '14949  Tynwald South, Harare, Zimbabwe', 'South Africa', 'second', 'stron', 'JjuiaDYp', '$2y$12$x8N6nH1J4re/3njS6G.J9.MS4t0KRElVSV1djkvA0QAXvwg9XF5NC', 'assets/img/user/sector_p202457650.jpg', NULL, NULL, '2024-08-27 08:15:22', '2024-08-27 14:02:22'),
-(4, 4, NULL, 'Mark', 'Male', 'mark@email.com', NULL, NULL, NULL, NULL, NULL, NULL, '$2y$12$sijXxcueTX0GNEravIuaZeIB3Tc3bO0bhHLvFsNRihoej.33G0aAu', NULL, NULL, NULL, '2024-09-10 14:36:49', '2024-09-10 14:36:49'),
-(6, 4, NULL, 'Test', NULL, 'test@email.com', NULL, NULL, NULL, NULL, NULL, '12345678', '$2y$12$UZwRbZ16qqngyUh/gjjSJuKdabc7wXPi1jiw4KGif2XOqgu3x58yG', NULL, NULL, NULL, '2024-09-27 11:41:12', '2024-09-27 11:41:12');
+INSERT INTO `users` (`id`, `role_level`, `membership_id`, `name`, `who_join`, `gender`, `email`, `phone`, `address`, `country`, `company_name`, `profession`, `code`, `password`, `image`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 1, 2, 'Admin', NULL, 'Male', 'admin@email.com', '45', '67', 'Zimbabwe', 'first', 'Good', '12345678', '$2y$12$WEG2IL8MRnu8SPN3e1g4QeyCK4TnSqVejHUyzolabZswEvdC7.ul6', 'assets/img/user/user_202421748.jpg', NULL, NULL, '2024-08-23 14:53:08', '2024-09-09 14:21:42'),
+(3, 3, NULL, 'Mark Chovava', NULL, 'Male', 'markchovava@gmail.com', '0782210021', '14949  Tynwald South, Harare, Zimbabwe', 'South Africa', 'second', 'stron', 'JjuiaDYp', '$2y$12$x8N6nH1J4re/3njS6G.J9.MS4t0KRElVSV1djkvA0QAXvwg9XF5NC', 'assets/img/user/sector_p202457650.jpg', NULL, NULL, '2024-08-27 08:15:22', '2024-08-27 14:02:22'),
+(4, 4, 2, 'Mark', NULL, 'Male', 'mark@email.com', NULL, NULL, 'Antarctica', NULL, NULL, NULL, '$2y$12$sijXxcueTX0GNEravIuaZeIB3Tc3bO0bhHLvFsNRihoej.33G0aAu', NULL, NULL, NULL, '2024-09-10 14:36:49', '2024-10-11 12:00:08'),
+(6, 4, NULL, 'Test', NULL, NULL, 'test@email.com', NULL, NULL, NULL, NULL, NULL, '12345678', '$2y$12$UZwRbZ16qqngyUh/gjjSJuKdabc7wXPi1jiw4KGif2XOqgu3x58yG', NULL, NULL, NULL, '2024-09-27 11:41:12', '2024-09-27 15:23:18'),
+(7, 4, NULL, 'Cho Cho', NULL, NULL, 'cho@email.com', NULL, NULL, NULL, NULL, NULL, '12345678', '$2y$12$J.9D/xmv1rSlZOVOjpzWDO0BaGZMsDA0ut3xVPa/ohpMwjj6sdMx2', NULL, NULL, NULL, '2024-10-10 13:23:35', '2024-10-10 13:24:45');
 
 -- --------------------------------------------------------
 
@@ -1053,6 +1075,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `qr_codes`
+--
+ALTER TABLE `qr_codes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -1127,7 +1155,7 @@ ALTER TABLE `investments`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `memberships`
@@ -1139,13 +1167,13 @@ ALTER TABLE `memberships`
 -- AUTO_INCREMENT for table `member_orders`
 --
 ALTER TABLE `member_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `member_order_infos`
 --
 ALTER TABLE `member_order_infos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1187,7 +1215,13 @@ ALTER TABLE `partners`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `qr_codes`
+--
+ALTER TABLE `qr_codes`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1211,7 +1245,7 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_events`
