@@ -27,13 +27,13 @@ class UserController extends Controller
     public function index(Request $request){
         $user_id = Auth::user()->id;
         if(!empty($request->search)) {
-            $data = User::with(['role'])->where('id', '!=', $user_id)
+            $data = User::with(['role', 'qrcode'])->where('id', '!=', $user_id)
                     ->where('name', 'LIKE', '%' . $request->search . '%')
                     ->orderBy('updated_at', 'desc')
                     ->paginate(12);
             return  UserResource::collection($data);
         } else{
-            $data = User::with(['role'])->where('id', '!=', $user_id)
+            $data = User::with(['role', 'qrcode'])->where('id', '!=', $user_id)
                     ->orderBy('name', 'asc')
                     ->orderBy('updated_at', 'desc')
                     ->paginate(12);
@@ -79,7 +79,7 @@ class UserController extends Controller
     }
 
     public function view($id){
-        $data = User::with(['role'])->find($id);
+        $data = User::with(['role', 'qrcode'])->find($id);
         return  new UserResource($data);
     }
 

@@ -85,10 +85,12 @@ class AuthController extends Controller
                 'status' => 3,
             ]);
         }
+        $membership = Membership::first();
         /* USER */
         $data = new User();
         $data->name = $request->name;
         $data->email = $request->email;
+        $data->membership_id = $membership->id;
         $data->role_level = 4;
         $data->password = Hash::make($request->password);
         $data->code = $request->password;
@@ -130,11 +132,10 @@ class AuthController extends Controller
         $data->save();
         /*  */
         $user = User::with(['membership'])->where('email', $request->email)->first();
-        /*  */
         /* Dealing with Membership. */
-        $membership = null;
+        $membership_id = null;
         if($user->membership()->exists()){
-            $membership = $user->membership->id;
+            $membership_id = $user->membership->id;
         }
         return response()->json([
             'status' => 1,
@@ -142,7 +143,7 @@ class AuthController extends Controller
             'data' => new UserResource($data),
             'auth_token' => $user->createToken($user->email)->plainTextToken,
             'role_level' => $user->role_level,
-            'membership' => $membership,
+            'membership_id' => $membership_id,
         ]);
     }
 
@@ -173,7 +174,7 @@ class AuthController extends Controller
             'message' => 'Login Successful.',
             'auth_token' => $user->createToken($user->email)->plainTextToken,
             'role_level' => $user->role_level,
-            'membership' => $membership_id,
+            'membership_id' => $membership_id,
         ]);
     }
 
@@ -192,7 +193,7 @@ class AuthController extends Controller
 
     public function view(){
         $user_id = Auth::user()->id;
-        $data = User::with(['role', 'membership'])->find($user_id);
+        $data = User::with(['role', 'membership', 'qrcode'])->find($user_id);
         return response()->json([
             'data' => new UserResource($data),
         ]);

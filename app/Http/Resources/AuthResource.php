@@ -18,11 +18,13 @@ class AuthResource extends JsonResource
         return [
             'id' => $this->id,
             'image' => $this->image,
+            'name' => $this->name,
+            'password' => $this->password,
             'email' => $this->email,
             'address' => $this->address,
             'country' => $this->country,
-            'name' => $this->name,
-            'password' => $this->password,
+            'profession' => $this->profession,
+            'company_name' => $this->company_name,
             'code' => $this->code,
             'role_level' => $this->role_level,
             'phone' => $this->phone,
@@ -30,7 +32,8 @@ class AuthResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'role' => new RoleResource($this->whenLoaded('role')),
-            
+            'membership' => new MembershipResource($this->whenLoaded('membership')),
+            'qrcode' => new QrCodeResource($this->whenLoaded('qrcode')),
         ];
      
     }
